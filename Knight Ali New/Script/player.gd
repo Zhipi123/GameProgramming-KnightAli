@@ -4,7 +4,9 @@ var speed = 100
 var health = 150
 var player_alive = true
 var current_direction = "none"
-@onready var weapon = $weapon
+
+var weapon: Node2D = null  # 由 equip_weapon 加载
+var weapon_scene: PackedScene = preload("res://Scene/weapons/m4a1.tscn")  # 默认武器
 
 var is_shooting = false
 var enemy_in_attack_range = false
@@ -12,12 +14,21 @@ var enemy_attack_cooldown = true
 var shoot_cooldown = 0.0
 const SHOOT_COOLDOWN_DURATION = 0.5
 
-var previous_direction = "none"  # 用于检测是否发生方向切换
+var previous_direction = "none"
 
 func _ready():
-	pass
+	equip_weapon(weapon_scene)
+
+func equip_weapon(scene: PackedScene):
+	if weapon:
+		weapon.queue_free()
+	
+	weapon = scene.instantiate()
+	$weapon_holder.add_child(weapon)
+	weapon.position = Vector2.ZERO
 
 func _process(delta):
+	# 相机设置
 	if global.current_scene == "HomeScene":
 		$Camera2D.zoom = Vector2(1.75, 1.75)
 		$Camera2D.limit_left = 0
@@ -25,7 +36,6 @@ func _process(delta):
 		$Camera2D.limit_right = 1140
 		$Camera2D.limit_bottom = 640
 		speed = 300
-		
 	elif global.current_scene == "GrassScene":
 		$Camera2D.zoom = Vector2(2.3, 2.3)
 		$Camera2D.limit_left = 0
@@ -33,20 +43,17 @@ func _process(delta):
 		$Camera2D.limit_right = 1150
 		$Camera2D.limit_bottom = 640
 		speed = 150
-		
+
 	is_shooting = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 
-	# 设置射击后的锁定时间
 	if is_shooting:
 		shoot_cooldown = SHOOT_COOLDOWN_DURATION
 	elif shoot_cooldown > 0.0:
 		shoot_cooldown -= delta
 
-	# 控制朝向：静止 / 射击中 / 射击后延迟中
 	if is_shooting or velocity == Vector2.ZERO or shoot_cooldown > 0.0:
 		update_facing_by_mouse()
 
-	# 如果朝向发生变化，重置枪的角度，避免翻转
 	if current_direction != previous_direction:
 		reset_weapon_angle()
 		previous_direction = current_direction
@@ -56,18 +63,15 @@ func _process(delta):
 func _physics_process(delta):
 	var input_vector = player_movement(delta)
 	on_attack()
-	if health <=0 :
-		player_alive = false #添加结束动画
+	if health <= 0:
+		player_alive = false
 		health = 0
 		print("player died!")
-		self.queue_free()
-		
-	if is_shooting:
+		queue_free()
+
+	if is_shooting and weapon:
 		weapon.setup_direction(weapon.aim_direction)
 		weapon.shoot()
-
-func player():
-	pass
 
 func player_movement(delta):
 	var input_vector = Vector2.ZERO
@@ -99,12 +103,11 @@ func player_movement(delta):
 
 func update_facing_by_mouse():
 	var mouse_pos = get_global_mouse_position()
-	if mouse_pos.x >= global_position.x:
-		current_direction = "right"
-	else:
-		current_direction = "left"
+	current_direction = "right" if mouse_pos.x >= global_position.x else "left"
 
 func reset_weapon_angle():
+	if not weapon:
+		return
 	if current_direction == "right":
 		weapon.rotation_degrees = 0
 	elif current_direction == "left":
@@ -114,55 +117,28 @@ func play_animation(movement):
 	var anim = $AnimatedSprite2D
 
 	if current_direction == "right":
-		if movement == 1:
-			anim.play("walkright_girl")
-		else:
-			anim.play("idle_girl_right")
+		anim.play("walkright_girl" if movement == 1 else "idle_girl_right")
 	elif current_direction == "left":
-		if movement == 1:
-			anim.play("walkleft_girl")
-		else:
-			anim.play("idle_girl_left")
+		anim.play("walkleft_girl" if movement == 1 else "idle_girl_left")
 
-	# 武器根据当前朝向控制显示
-	if current_direction == "right":
-		$weapon.scale.x = 1
-		$weapon.position.x = 30
-		$weapon/AnimatedSprite2D.flip_h = false
-		$weapon/AnimatedSprite2D.flip_v = false
-		$weapon/Marker2D.position.x = 60  # 设置合适的x值（向右）
-		$weapon/Marker2D.position.y = 0
-		$weapon/Marker2D.rotation_degrees = 0  # 保持朝右
-
-	elif current_direction == "left":
-		$weapon.scale.x = -1
-		$weapon.position.x = -35
-		$weapon/AnimatedSprite2D.flip_h = true
-		$weapon/AnimatedSprite2D.flip_v = true
-		$weapon/Marker2D.position.x = -80 # 设置合适的x值（向左）
-		$weapon/Marker2D.position.y = 8
-		$weapon/Marker2D.rotation_degrees = 180  # 镜像翻转
-
+	# 让武器自己处理朝向、位置、翻转等
+	if weapon and weapon.has_method("apply_direction_settings"):
+		weapon.apply_direction_settings(current_direction)
 
 func update_weapon_aim():
+	if not weapon:
+		return
+
 	var mouse_pos = get_global_mouse_position()
 	var weapon_pos = weapon.global_position
 	var to_mouse = (mouse_pos - weapon_pos).normalized()
+	var angle_deg = rad_to_deg(to_mouse.angle())
 
-	var angle = to_mouse.angle()
-	var angle_deg = rad_to_deg(angle)
-
-	# 限制枪口旋转范围，避免鼠标在背后造成翻转
-	if current_direction == "right":
-		if angle_deg < -90 or angle_deg > 90:
-			return
-	elif current_direction == "left":
-		if angle_deg > -90 and angle_deg < 90:
-			return
+	if (current_direction == "right" and (angle_deg < -90 or angle_deg > 90)) or (current_direction == "left" and (angle_deg > -90 and angle_deg < 90)):
+		return
 
 	weapon.rotation_degrees = angle_deg
 	weapon.aim_direction = to_mouse
-
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
@@ -171,14 +147,16 @@ func _on_player_hitbox_body_entered(body):
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_in_attack_range = false
-		
+
 func on_attack():
-	if enemy_in_attack_range and enemy_attack_cooldown == true:
-		health = health - 10
+	if enemy_in_attack_range and enemy_attack_cooldown:
+		health -= 10
 		enemy_attack_cooldown = false
 		$on_attack_cooldown.start()
 		print(health)
 
-
 func _on_on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+	
+func player():
+	pass

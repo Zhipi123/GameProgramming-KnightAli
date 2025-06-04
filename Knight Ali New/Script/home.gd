@@ -5,14 +5,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	change_scene()
-
-
+	
 func _on_go_out_to_grass_body_entered(body):
 	if body.has_method("player"):
 		global.transition_scene = true 
 	
-
-
 func _on_go_out_to_grass_body_exited(body):
 	if body.has_method("player"):
 		global.transition_scene = false

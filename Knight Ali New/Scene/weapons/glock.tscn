@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddayly6l7g14e"]
+
+[ext_resource type="PackedScene" uid="uid://cda8vfmgncnhp" path="res://Scene/weapon.tscn" id="1_ercmt"]
+[ext_resource type="Script" path="res://Scene/weapons/glock.gd" id="2_ed25g"]
+[ext_resource type="Texture2D" uid="uid://c27nis8x5h6qh" path="res://weapon/glock/Glock-.png" id="2_wpa3e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwa6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wpa3e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Glock" instance=ExtResource("1_ercmt")]
+script = ExtResource("2_ed25g")
+
+[node name="Marker2D" parent="." index="0"]
+position = Vector2(32, -6)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(3, 3)
+scale = Vector2(0.48, 0.48)
+sprite_frames = SubResource("SpriteFrames_vwa6h")
