@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://4gx4t2mklmw7"]
+
+[ext_resource type="PackedScene" uid="uid://cda8vfmgncnhp" path="res://Scene/weapon.tscn" id="1_eho31"]
+
+[node name="cur_weapon" type="Node2D"]
+
+[node name="weapon" parent="." instance=ExtResource("1_eho31")]
+
+[node name="weapon2" parent="." instance=ExtResource("1_eho31")]
+
+[node name="weapon3" parent="." instance=ExtResource("1_eho31")]
