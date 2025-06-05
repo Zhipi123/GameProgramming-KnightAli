@@ -43,6 +43,13 @@ func _process(delta):
 		$Camera2D.limit_right = 1150
 		$Camera2D.limit_bottom = 640
 		speed = 150
+	elif global.current_scene == "ShopScene":
+		$Camera2D.zoom = Vector2(1.7, 1.7)
+		$Camera2D.limit_left = 0
+		$Camera2D.limit_top = 0
+		$Camera2D.limit_right = 1140
+		$Camera2D.limit_bottom = 640
+		speed = 300
 
 	is_shooting = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 

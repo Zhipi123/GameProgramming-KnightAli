@@ -134,7 +134,7 @@ position = Vector2(746.5, 617.5)
 shape = SubResource("RectangleShape2D_nkyp5")
 
 [node name="player" parent="." instance=ExtResource("5_474hv")]
-position = Vector2(742, 455)
+position = Vector2(510, 382)
 
 [connection signal="body_entered" from="GoOutToGrass" to="." method="_on_go_out_to_grass_body_entered"]
 [connection signal="body_exited" from="GoOutToGrass" to="." method="_on_go_out_to_grass_body_exited"]

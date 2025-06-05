@@ -18,7 +18,10 @@ animations = [{
 [node name="M4A1" instance=ExtResource("1_vjua3")]
 script = ExtResource("2_er6dg")
 
+[node name="Marker2D" parent="." index="0"]
+position = Vector2(57, -3)
+
 [node name="AnimatedSprite2D" parent="." index="2"]
-position = Vector2(1, 4)
+position = Vector2(6, 4)
 scale = Vector2(0.095, 0.095)
 sprite_frames = SubResource("SpriteFrames_55adx")

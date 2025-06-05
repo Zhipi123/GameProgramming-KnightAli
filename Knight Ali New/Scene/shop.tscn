@@ -1,0 +1,169 @@
+[gd_scene load_steps=18 format=3 uid="uid://d3whrgnext7xd"]
+
+[ext_resource type="Texture2D" uid="uid://be4ijg7vy7m4x" path="res://Background/shop.png" id="1_2gwsp"]
+[ext_resource type="Script" path="res://Script/shop.gd" id="1_5qg21"]
+[ext_resource type="Texture2D" uid="uid://32dhid0ht8k2" path="res://Items/shop-furniture.png" id="2_u0o3u"]
+[ext_resource type="Texture2D" uid="uid://t17qaf3vjkb0" path="res://Items/furnitures.png" id="3_61r7x"]
+[ext_resource type="Texture2D" uid="uid://bfyu4ujsl47ot" path="res://Items/chest.png" id="4_htokb"]
+[ext_resource type="Texture2D" uid="uid://cnwxs11b28mwg" path="res://Items/carpet.png" id="5_1jf23"]
+[ext_resource type="Texture2D" uid="uid://btg8ku0hw8mu8" path="res://weapon/allweapon.png" id="7_kc564"]
+[ext_resource type="PackedScene" uid="uid://exluca04i7q7" path="res://Scene/player.tscn" id="8_daeq7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ch1cn"]
+texture = ExtResource("2_u0o3u")
+1:25/size_in_atlas = Vector2i(62, 26)
+1:25/0 = 0
+1:25/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:25/0/physics_layer_0/angular_velocity = 0.0
+1:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-464, -32, 444, -52, 432, 180, 356, 184, 352, 140, -360, 144, -352, 188, -448, 188)
+41:5/size_in_atlas = Vector2i(8, 19)
+41:5/0 = 0
+41:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+41:5/0/physics_layer_0/angular_velocity = 0.0
+50:7/size_in_atlas = Vector2i(11, 16)
+50:7/0 = 0
+50:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+50:7/0/physics_layer_0/angular_velocity = 0.0
+3:5/size_in_atlas = Vector2i(20, 19)
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+25:4/size_in_atlas = Vector2i(15, 20)
+25:4/0 = 0
+25:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+25:4/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_ekb4h"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_ch1cn")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_li4kj"]
+texture = ExtResource("3_61r7x")
+9:28/size_in_atlas = Vector2i(16, 16)
+9:28/0 = 0
+9:28/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:28/0/physics_layer_0/angular_velocity = 0.0
+26:28/size_in_atlas = Vector2i(13, 19)
+26:28/0 = 0
+26:28/0/y_sort_origin = 120
+26:28/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+26:28/0/physics_layer_0/angular_velocity = 0.0
+45:3/size_in_atlas = Vector2i(19, 23)
+45:3/0 = 0
+45:3/0/y_sort_origin = -60
+45:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+45:3/0/physics_layer_0/angular_velocity = 0.0
+45:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-136, -92, 128, -78, 138, 88, 116, 98, 124, 152, 80, 156, 82, 96, -64, 100, -66, 158, -96, 156, -98, 88, -136, 88)
+19:48/size_in_atlas = Vector2i(22, 13)
+19:48/0 = 0
+19:48/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+19:48/0/physics_layer_0/angular_velocity = 0.0
+19:48/0/physics_layer_0/polygon_0/points = PackedVector2Array(-166, -40, 148, -32, 144, 108, 106, 106, 104, 78, -120, 78, -132, 106, -162, 96)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3epm"]
+texture = ExtResource("4_htokb")
+2:3/size_in_atlas = Vector2i(12, 10)
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-87.6812, -33.9411, 83.4386, -36.7696, 86.267, 70.7107, -87.6812, 69.2965)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ao7ea"]
+texture = ExtResource("5_1jf23")
+7:16/size_in_atlas = Vector2i(50, 33)
+7:16/0 = 0
+7:16/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:16/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_h28t0"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_li4kj")
+sources/1 = SubResource("TileSetAtlasSource_p3epm")
+sources/2 = SubResource("TileSetAtlasSource_ao7ea")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqcsv"]
+texture = ExtResource("7_kc564")
+1:14/size_in_atlas = Vector2i(29, 13)
+1:14/0 = 0
+32:14/size_in_atlas = Vector2i(30, 11)
+32:14/0 = 0
+65:14/size_in_atlas = Vector2i(30, 13)
+65:14/0 = 0
+5:28/size_in_atlas = Vector2i(17, 14)
+5:28/0 = 0
+34:28/size_in_atlas = Vector2i(25, 13)
+34:28/0 = 0
+64:29/size_in_atlas = Vector2i(31, 13)
+64:29/0 = 0
+64:43/size_in_atlas = Vector2i(31, 13)
+64:43/0 = 0
+33:42/size_in_atlas = Vector2i(27, 14)
+33:42/0 = 0
+2:42/size_in_atlas = Vector2i(24, 14)
+2:42/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_t833p"]
+sources/0 = SubResource("TileSetAtlasSource_aqcsv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whpew"]
+size = Vector2(88, 37.5)
+
+[node name="ShopScene" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-1, 1)
+script = ExtResource("1_5qg21")
+
+[node name="Shop" type="Sprite2D" parent="."]
+position = Vector2(577, -112)
+scale = Vector2(1.12109, 0.871812)
+texture = ExtResource("1_2gwsp")
+offset = Vector2(0, 500)
+
+[node name="furniture1" type="TileMap" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.27, 0.27)
+tile_set = SubResource("TileSet_ekb4h")
+format = 2
+layer_0/name = "furniture"
+layer_0/y_sort_enabled = true
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(4259893, 65537, 25, 1310908, 1638401, 4, 1376467, 3276801, 7, 1310953, 2686977, 5)
+
+[node name="furniture2" type="TileMap" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+tile_set = SubResource("TileSet_h28t0")
+format = 2
+layer_0/name = "carpet"
+layer_0/tile_data = PackedInt32Array(2883612, 458754, 16)
+layer_1/name = "furniture"
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(4718720, 1703936, 28, 1835121, 2949120, 3, 3080306, 1245184, 48, 983115, 589824, 28, 1835071, 131073, 3)
+
+[node name="gunsOnWall" type="TileMap" parent="."]
+position = Vector2(51, 20)
+scale = Vector2(0.28, 0.28)
+tile_set = SubResource("TileSet_t833p")
+format = 2
+layer_0/name = "guns"
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(1572877, 327680, 28, 524311, 65536, 14, 1572903, 2228224, 28, 393276, 2097152, 14, 1572938, 4194304, 29, 393310, 4259840, 14)
+
+[node name="player" parent="." instance=ExtResource("8_daeq7")]
+position = Vector2(937, 586)
+
+[node name="goBackToScene" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goBackToScene"]
+position = Vector2(1025, 630)
+shape = SubResource("RectangleShape2D_whpew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(4, 229)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1, 0, 11, 133, 4, 282, 9, 409, 464, 399, 973, 405, 975, 418, 1069, 420, 1069, 402, 1125, 402, 1116, 91, 1131, -8, 952, 0, 753, 0, 547, -1, 360, -16, 85, -19, 4, -3, 43, -47, 404, -53, 771, -23, 1175, -40, 1150, 158, 1164, 423, 822, 467, 419, 450, 57, 465, -68, 409, -40, 211)
+
+[connection signal="body_entered" from="goBackToScene" to="." method="_on_go_back_to_scene_body_entered"]
+[connection signal="body_exited" from="goBackToScene" to="." method="_on_go_back_to_scene_body_exited"]
