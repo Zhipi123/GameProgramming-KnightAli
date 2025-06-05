@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 100
-var health = 150
+var health = 100
 var player_alive = true
 var current_direction = "none"
 
@@ -17,6 +17,7 @@ const SHOOT_COOLDOWN_DURATION = 0.5
 var previous_direction = "none"
 
 func _ready():
+	health = global.player_health
 	equip_weapon(weapon_scene)
 
 func equip_weapon(scene: PackedScene):
@@ -28,6 +29,7 @@ func equip_weapon(scene: PackedScene):
 	weapon.position = Vector2.ZERO
 
 func _process(delta):
+	global.player_health = health  # 保持全局生命值
 	# 相机设置
 	if global.current_scene == "HomeScene":
 		$Camera2D.zoom = Vector2(1.75, 1.75)
@@ -50,7 +52,7 @@ func _process(delta):
 		$Camera2D.limit_right = 1140
 		$Camera2D.limit_bottom = 640
 		speed = 300
-
+	update_health()
 	is_shooting = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 
 	if is_shooting:
@@ -167,3 +169,19 @@ func _on_on_attack_cooldown_timeout():
 	
 func player():
 	pass
+
+func update_health():
+	var healthbar = $health_bar
+	healthbar.value = health
+	if health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+
+func _on_regin_timer_timeout():
+	if health < 100:
+		health = health + 20
+		if health > 100:
+			health = 100
+	if health <= 0:
+		health = 0

@@ -24,6 +24,7 @@ var grass_to_shop_posy = 304
 var player_come_shop_posx = 937
 var player_come_shop_posy = 586
 
+var player_health = 100
 
 func finish_changescenes():
 	if transition_scene:

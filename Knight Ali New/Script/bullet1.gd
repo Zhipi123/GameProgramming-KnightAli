@@ -10,7 +10,7 @@ func _ready():
 		scale = Vector2(1, 1)
 	elif global.current_scene == "GrassScene":
 		scale = Vector2(0.69, 0.69)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1.3).timeout
 	queue_free()
 
 func set_direction(bulletDirection):

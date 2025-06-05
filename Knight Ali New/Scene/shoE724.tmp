@@ -152,7 +152,7 @@ layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(1572877, 327680, 28, 524311, 65536, 14, 1572903, 2228224, 28, 393276, 2097152, 14, 1572938, 4194304, 29, 393310, 4259840, 14)
 
 [node name="player" parent="." instance=ExtResource("8_daeq7")]
-position = Vector2(746, 427)
+position = Vector2(937, 586)
 scale = Vector2(1.085, 1.085)
 
 [node name="goBackToScene" type="Area2D" parent="."]
@@ -170,7 +170,7 @@ polygon = PackedVector2Array(-1, 0, 11, 133, 4, 282, 9, 409, 464, 399, 973, 405,
 [node name="ShopNPC" parent="." instance=ExtResource("9_3noti")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(514, 476)
+position = Vector2(440, 358)
 scale = Vector2(2.94, 2.94)
 
 [connection signal="body_entered" from="goBackToScene" to="." method="_on_go_back_to_scene_body_entered"]

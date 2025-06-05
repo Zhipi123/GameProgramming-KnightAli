@@ -37,7 +37,7 @@ func _physics_process(delta):
 
 		if position.distance_to(move_target) < 5:
 			move_target = get_random_move_target()
-
+	update_health()
 	update_animation()
 
 func update_animation(state="idle"):
@@ -85,3 +85,19 @@ func die():
 
 	await get_tree().create_timer(0.6).timeout  # 播完 6 帧动画
 	queue_free()
+
+func update_health():
+	var healthbar = $health_bar
+	healthbar.value = health
+	if health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+		
+func _on_regin_timer_timeout():
+	if health < 100:
+		health = health + 20
+		if health > 100:
+			health = 100
+	if health <= 0:
+		health = 0
