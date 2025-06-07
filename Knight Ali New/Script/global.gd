@@ -4,7 +4,7 @@ var player_current_attack = false
 var previous_scene: String = ""
 var current_scene = "HomeScene"
 var transition_scene = false
-var next_scene = ""  # ✅ 新增字段：记录要切换到的场景路径
+var next_scene = ""  
 #home x,y
 var player_back_home_posx = 750
 var player_back_home_posy = 500
@@ -29,4 +29,4 @@ var player_health = 100
 func finish_changescenes():
 	if transition_scene:
 		transition_scene = false
-		current_scene = next_scene.get_file().get_basename()  # 也可以写死为 "HomeScene"、"ShopScene"
+		current_scene = next_scene.get_file().get_basename()  

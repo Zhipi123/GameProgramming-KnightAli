@@ -1,7 +1,7 @@
-extends "res://Scene/weapon.gd"  # 指向 weapon.gd 的路径
+extends "res://Scene/weapon.gd"  
 
 func _ready():
-	shootSpeed = 15.0  # 或 M4A1 的自定义属性
+	shootSpeed = 15.0  
 	bullet_damage = 15
 	super._ready()
 

@@ -7,7 +7,7 @@ var player = null
 var health = 100
 var random_move_range = 50
 var move_target = Vector2.ZERO
-var is_dying = false  # 防止重复触发
+var is_dying = false
 
 func get_random_move_target():
 	var random_x = position.x + randf_range(-random_move_range, random_move_range)
@@ -19,7 +19,7 @@ func _ready():
 
 func _physics_process(delta):
 	if is_dying:
-		return  # 死亡动画期间不执行移动
+		return
 
 	var current_speed = idle_speed
 
@@ -28,34 +28,20 @@ func _physics_process(delta):
 		var direction = (player.position - position).normalized()
 		var move_vector = direction * current_speed * delta
 		move_and_collide(move_vector)
-		update_animation("chase")
+		update_animation("chase", move_vector)
 	else:
 		var direction = (move_target - position).normalized()
 		var move_vector = direction * current_speed * delta
 		move_and_collide(move_vector)
-		update_animation("move")
-
+		update_animation("move", move_vector)
+		
 		if position.distance_to(move_target) < 5:
 			move_target = get_random_move_target()
-	update_health()
-	update_animation()
 
-func update_animation(state="idle"):
-	if velocity.length() < 0.1:
-		$AnimatedSprite2D.play("idle")
-	else:
-		if state == "chase":
-			if abs(velocity.x) > abs(velocity.y):
-				$AnimatedSprite2D.play("walk_right" if velocity.x > 0 else "walk_left")
-			else:
-				$AnimatedSprite2D.play("walk_down" if velocity.y > 0 else "walk_up")
-		elif state == "move":
-			if abs(velocity.x) > abs(velocity.y):
-				$AnimatedSprite2D.play("walk_right" if velocity.x > 0 else "walk_left")
-			else:
-				$AnimatedSprite2D.play("walk_down" if velocity.y > 0 else "walk_up")
-		else:
-			$AnimatedSprite2D.play("idle")
+	update_health()
+
+func update_animation(state="idle", move_vector=Vector2.ZERO):
+	$AnimatedSprite2D.play("idle")
 
 func enemy():
 	pass
@@ -83,7 +69,7 @@ func die():
 	$AnimatedSprite2D.play("death")
 	print("Enemy died!")
 
-	await get_tree().create_timer(0.6).timeout  # 播完 6 帧动画
+	await get_tree().create_timer(0.6).timeout 
 	queue_free()
 
 func update_health():

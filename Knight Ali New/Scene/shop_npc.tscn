@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dt4vv4mk56o6v"]
+[gd_scene load_steps=27 format=3 uid="uid://dt4vv4mk56o6v"]
 
 [ext_resource type="Script" path="res://Script/shop_npc.gd" id="1_8t243"]
 [ext_resource type="Texture2D" uid="uid://c4gbsf78cnllo" path="res://npc/shop_npc1-reverse.png" id="1_pw8xq"]
 [ext_resource type="Texture2D" uid="uid://h5v4hcuvsvc4" path="res://npc/shop_npc1.png" id="2_o0sbi"]
+[ext_resource type="Texture2D" uid="uid://drkppsyeo5cao" path="res://Shadows/SmallShadow.png" id="4_kijoc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w53vm"]
 atlas = ExtResource("1_pw8xq")
@@ -181,3 +182,9 @@ frame_progress = 0.955675
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tpsf2")
+
+[node name="SmallShadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-1, 6)
+scale = Vector2(2.32, 2.32)
+texture = ExtResource("4_kijoc")

@@ -29,8 +29,7 @@ func equip_weapon(scene: PackedScene):
 	weapon.position = Vector2.ZERO
 
 func _process(delta):
-	global.player_health = health  # 保持全局生命值
-	# 相机设置
+	global.player_health = health
 	if global.current_scene == "HomeScene":
 		$Camera2D.zoom = Vector2(1.75, 1.75)
 		$Camera2D.limit_left = 0
@@ -130,7 +129,6 @@ func play_animation(movement):
 	elif current_direction == "left":
 		anim.play("walkleft_girl" if movement == 1 else "idle_girl_left")
 
-	# 让武器自己处理朝向、位置、翻转等
 	if weapon and weapon.has_method("apply_direction_settings"):
 		weapon.apply_direction_settings(current_direction)
 

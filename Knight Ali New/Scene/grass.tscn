@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://exluca04i7q7" path="res://Scene/player.tscn" id="5_q6snc"]
 [ext_resource type="Texture2D" uid="uid://dhvjdkak37xra" path="res://Items/GrassBig-export.png" id="6_0lar3"]
 [ext_resource type="Texture2D" uid="uid://cidt0qvllkv8t" path="res://Shadows/shadow.png" id="6_2ukpi"]
-[ext_resource type="PackedScene" uid="uid://b6mol0kk425h6" path="res://Scene/enemy.tscn" id="8_8y62i"]
+[ext_resource type="PackedScene" uid="uid://ro7ml0egqh8" path="res://Scene/enemy_spawner.tscn" id="10_k37fs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsi1s"]
 texture = ExtResource("1_8i5ts")
@@ -145,35 +145,23 @@ shape = SubResource("RectangleShape2D_nh2w5")
 position = Vector2(540, 174)
 scale = Vector2(0.497, 0.497)
 
-[node name="enemy2" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(403, 572)
-
-[node name="enemy" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(513, 219)
-
-[node name="enemy3" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(111, 441)
-
-[node name="enemy4" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(955, 382)
-
-[node name="enemy5" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(1112, 561)
-
-[node name="enemy6" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(3, 180)
-
-[node name="enemy7" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(802, 100)
-
-[node name="enemy8" parent="." instance=ExtResource("8_8y62i")]
-position = Vector2(755, 573)
-
 [node name="GoIntoShop" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoIntoShop"]
 position = Vector2(697, 278)
 shape = SubResource("RectangleShape2D_n3faq")
+
+[node name="enemy_spawner" parent="." instance=ExtResource("10_k37fs")]
+position = Vector2(68, 186)
+
+[node name="enemy_spawner2" parent="." instance=ExtResource("10_k37fs")]
+position = Vector2(393, 381)
+
+[node name="enemy_spawner3" parent="." instance=ExtResource("10_k37fs")]
+position = Vector2(799, 493)
+
+[node name="enemy_spawner4" parent="." instance=ExtResource("10_k37fs")]
+position = Vector2(1021, 211)
 
 [connection signal="body_entered" from="GoBackToHome" to="." method="_on_go_back_to_home_body_entered"]
 [connection signal="body_exited" from="GoBackToHome" to="." method="_on_go_back_to_home_body_exited"]
