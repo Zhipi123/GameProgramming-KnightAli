@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbeflneripred"]
+[gd_scene load_steps=23 format=3 uid="uid://dbeflneripred"]
 
 [ext_resource type="Script" path="res://Script/grass.gd" id="1_0hi7w"]
 [ext_resource type="Texture2D" uid="uid://c1b43jlrtpfhm" path="res://Items/Grass&Road1.png" id="1_8i5ts"]
@@ -85,6 +85,12 @@ size = Vector2(27.5, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3faq"]
 size = Vector2(35, 13.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujh5n"]
+size = Vector2(36.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvfyo"]
+size = Vector2(22.5, 36.5)
+
 [node name="GrassScene" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(74, -1)
@@ -142,7 +148,7 @@ position = Vector2(211, 124)
 shape = SubResource("RectangleShape2D_nh2w5")
 
 [node name="player" parent="." instance=ExtResource("5_q6snc")]
-position = Vector2(540, 174)
+position = Vector2(534, 207)
 scale = Vector2(0.497, 0.497)
 
 [node name="GoIntoShop" type="Area2D" parent="."]
@@ -163,7 +169,24 @@ position = Vector2(799, 493)
 [node name="enemy_spawner4" parent="." instance=ExtResource("10_k37fs")]
 position = Vector2(1021, 211)
 
+[node name="wrong_road1" type="Area2D" parent="."]
+position = Vector2(454, 688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road1"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ujh5n")
+
+[node name="correct_road" type="Area2D" parent="."]
+position = Vector2(1173, 590)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="correct_road"]
+position = Vector2(-25, -1)
+shape = SubResource("RectangleShape2D_fvfyo")
+
 [connection signal="body_entered" from="GoBackToHome" to="." method="_on_go_back_to_home_body_entered"]
 [connection signal="body_exited" from="GoBackToHome" to="." method="_on_go_back_to_home_body_exited"]
 [connection signal="body_entered" from="GoIntoShop" to="." method="_on_go_into_shop_body_entered"]
 [connection signal="body_exited" from="GoIntoShop" to="." method="_on_go_into_shop_body_exited"]
+[connection signal="body_entered" from="wrong_road1" to="." method="_on_wrong_road_1_body_entered"]
+[connection signal="body_entered" from="correct_road" to="." method="_on_correct_road_body_entered"]
+[connection signal="body_exited" from="correct_road" to="." method="_on_correct_road_body_exited"]

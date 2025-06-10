@@ -19,10 +19,18 @@ var grass_to_home_posy = 236
 
 var grass_to_shop_posx = 697
 var grass_to_shop_posy = 304
-#shop x,y
 
+var grass_to_snow_posx = 32
+var grass_to_snow_posy = 488
+#shop x,y
 var player_come_shop_posx = 937
 var player_come_shop_posy = 586
+#snow x,y
+var snow_to_grass_posx = 1107
+var snow_to_grass_posy = 591
+
+var grass_to_snowshop_posx = 215
+var grass_to_snowshop_posy = 245
 
 var player_health = 100
 

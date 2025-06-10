@@ -6,7 +6,7 @@ func _ready():
 	print("Previous Scene:", global.previous_scene)  
 	print("Next Scene:", global.next_scene)  
 
-	if global.previous_scene == "GrassScene":
+	if global.previous_scene == "GrassScene" or global.previous_scene == "SnowScene":
 		$player.position.x = global.player_come_shop_posx
 		$player.position.y = global.player_come_shop_posy
 
@@ -18,6 +18,8 @@ func _on_go_back_to_scene_body_entered(body):
 		global.transition_scene = true
 		if global.previous_scene == "GrassScene":
 			global.next_scene = "res://Scene/Grass.tscn"
+		elif global.previous_scene == "SnowScene":
+			global.next_scene = "res://Scene/snow.tscn"
 
 func _on_go_back_to_scene_body_exited(body):
 	if body.has_method("player"):

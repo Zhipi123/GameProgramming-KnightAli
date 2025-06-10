@@ -37,11 +37,11 @@ func _process(delta):
 		$Camera2D.limit_right = 1140
 		$Camera2D.limit_bottom = 640
 		speed = 300
-	elif global.current_scene == "GrassScene":
+	elif global.current_scene == "GrassScene" or global.current_scene == "SnowScene":
 		$Camera2D.zoom = Vector2(2.3, 2.3)
 		$Camera2D.limit_left = 0
 		$Camera2D.limit_top = 0
-		$Camera2D.limit_right = 1150
+		$Camera2D.limit_right = 1200
 		$Camera2D.limit_bottom = 640
 		speed = 150
 	elif global.current_scene == "ShopScene":

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxfnd5hp0xbdj"]
+
+[ext_resource type="Script" path="res://Script/loading.gd" id="1_clwiv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bljis"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v8845"]
+font_size = 51
+font_color = Color(0, 0, 0, 1)
+
+[node name="loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_clwiv")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.92549, 0.913725, 0.635294, 1)
+position = Vector2(576.25, 324.25)
+scale = Vector2(1153.5, 649.5)
+mesh = SubResource("QuadMesh_bljis")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 240.0
+offset_right = 902.0
+offset_bottom = 423.0
+text = "loading and coming soon!"
+label_settings = SubResource("LabelSettings_v8845")

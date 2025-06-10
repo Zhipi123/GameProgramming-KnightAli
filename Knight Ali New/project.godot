@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Knight Ali New"
-run/main_scene="res://Scene/home.tscn"
+run/main_scene="res://Scene/GUI/start.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

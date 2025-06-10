@@ -336,7 +336,7 @@ shape = SubResource("CircleShape2D_72wcm")
 zoom = Vector2(2.065, 2.065)
 limit_left = 0
 limit_top = 0
-limit_right = 1100
+limit_right = 1170
 limit_bottom = 640
 
 [node name="SmallShadow" type="Sprite2D" parent="."]
