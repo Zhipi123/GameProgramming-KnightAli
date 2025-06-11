@@ -5,11 +5,16 @@ func _ready():
 	print("Current Scene:", global.current_scene)
 	print("Previous Scene:", global.previous_scene)  
 	print("Next Scene:", global.next_scene)  
-
-	if global.previous_scene == "GrassScene" or global.previous_scene == "SnowScene":
+	print(global.buy_or_not)
+	if global.buy_or_not == true:
+		$player.position.x = global.after_buy_posx
+		$player.position.y = global.after_buy_posy
+		global.buy_or_not = false
+	elif global.previous_scene == "GrassScene" or global.previous_scene == "SnowScene":
 		$player.position.x = global.player_come_shop_posx
 		$player.position.y = global.player_come_shop_posy
-
+	
+	
 func _process(delta):
 	change_scene()
 
@@ -26,7 +31,15 @@ func _on_go_back_to_scene_body_exited(body):
 		global.transition_scene = false
 
 func change_scene():
-	if global.transition_scene:
+	if global.transition_scene :
 		global.previous_scene = "ShopScene"
 		get_tree().change_scene_to_file(global.next_scene)
 		global.finish_changescenes() 
+		
+func go_buy():
+		get_tree().change_scene_to_file("res://Scene/buy.tscn")
+
+func _on_buy_area_body_entered(body):
+	global.buy_or_not = true
+	if body.has_method("player"):
+		call_deferred("go_buy")

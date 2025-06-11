@@ -6,7 +6,7 @@ var player_alive = true
 var current_direction = "none"
 
 var weapon: Node2D = null  # 由 equip_weapon 加载
-var weapon_scene: PackedScene = preload("res://Scene/weapons/m4a1.tscn")  # 默认武器
+#var weapon_scene: PackedScene = preload("res://Scene/weapons/m4a1.tscn") 默认武器
 
 var is_shooting = false
 var enemy_in_attack_range = false
@@ -18,7 +18,7 @@ var previous_direction = "none"
 
 func _ready():
 	health = global.player_health
-	equip_weapon(weapon_scene)
+	equip_weapon(global.weapon_scene)
 
 func equip_weapon(scene: PackedScene):
 	if weapon:
@@ -29,6 +29,9 @@ func equip_weapon(scene: PackedScene):
 	weapon.position = Vector2.ZERO
 
 func _process(delta):
+	if global.weapon_scene !=global.current_weapon_scene:
+		equip_weapon(global.weapon_scene)
+		global.current_weapon_scene = global.weapon_scene
 	global.player_health = health
 	if global.current_scene == "HomeScene":
 		$Camera2D.zoom = Vector2(1.75, 1.75)

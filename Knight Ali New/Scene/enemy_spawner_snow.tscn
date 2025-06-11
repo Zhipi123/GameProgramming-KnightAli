@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjw3mvqynnde5"]
+
+[ext_resource type="PackedScene" uid="uid://ro7ml0egqh8" path="res://Scene/enemy_spawner.tscn" id="1_pgtfu"]
+[ext_resource type="Script" path="res://Script/enemy_spawner_snow.gd" id="2_viglk"]
+
+[node name="enemy_spawner_snow" instance=ExtResource("1_pgtfu")]
+script = ExtResource("2_viglk")
+
+[node name="spawn_gap" parent="." index="1"]
+wait_time = 30.0

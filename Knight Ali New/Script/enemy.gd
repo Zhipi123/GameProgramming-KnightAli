@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-var speed = 80
-var idle_speed = 40
+@export var speed = 80
+@export var idle_speed = 40
 var player_chase = false
 var player = null
-var health = 100
-var random_move_range = 50
+@export var health = 100
+@export var random_move_range = 50
 var move_target = Vector2.ZERO
 var is_dying = false
+var is_attack = false
 
 func get_random_move_target():
 	var random_x = position.x + randf_range(-random_move_range, random_move_range)
@@ -41,7 +42,10 @@ func _physics_process(delta):
 	update_health()
 
 func update_animation(state="idle", move_vector=Vector2.ZERO):
-	$AnimatedSprite2D.play("idle")
+	if is_attack == true:  # 如果当前动画不是攻击动画，则播放其他动画
+		$AnimatedSprite2D.play("attack")
+	else:
+		$AnimatedSprite2D.play("idle")
 
 func enemy():
 	pass
@@ -68,7 +72,8 @@ func die():
 	is_dying = true
 	$AnimatedSprite2D.play("death")
 	print("Enemy died!")
-
+	global.kill_enemies +=1
+	global.current_coins +=1
 	await get_tree().create_timer(0.6).timeout 
 	queue_free()
 
@@ -87,3 +92,15 @@ func _on_regin_timer_timeout():
 			health = 100
 	if health <= 0:
 		health = 0
+
+
+func _on_enemy_hitbox_body_entered(body):
+	if body.is_in_group("player"):
+		is_attack = true
+		$AnimatedSprite2D.play("attack")
+
+
+func _on_enemy_hitbox_body_exited(body):
+	if body.is_in_group("player"):
+		is_attack = false
+		$AnimatedSprite2D.play("idle")

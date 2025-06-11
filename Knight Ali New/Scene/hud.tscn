@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cccmlwlu08hrp"]
+
+[ext_resource type="Script" path="res://Script/hud.gd" id="1_1smd4"]
+[ext_resource type="Texture2D" uid="uid://c4l3i0x8bvasp" path="res://Items/diicsu-coin-small.png" id="1_xa6sd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6cqyc"]
+font_color = Color(0.984314, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6a64d"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sg7kb"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_1smd4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 115.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_xa6sd")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "123456"
+label_settings = SubResource("LabelSettings_6cqyc")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = 133.0
+offset_top = 12.0
+offset_right = 235.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Kill Enemies: "
+label_settings = SubResource("LabelSettings_6a64d")
+
+[node name="enemy_count" type="Label" parent="HBoxContainer2/Label"]
+layout_mode = 0
+offset_left = 134.0
+offset_right = 174.0
+offset_bottom = 28.0
+text = "60"
+label_settings = SubResource("LabelSettings_sg7kb")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+offset_left = 312.0
+offset_top = 8.0
+offset_right = 537.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+text = "Current Scene Enemy Count: "
+
+[node name="Label" type="Label" parent="HBoxContainer3/Label"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 1.0
+offset_right = 269.0
+offset_bottom = 24.0
+text = "111"

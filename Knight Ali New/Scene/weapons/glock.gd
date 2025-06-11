@@ -2,7 +2,7 @@ extends "res://Scene/weapon.gd"
 
 func _ready():
 	shootSpeed = 4.0
-	bullet_damage = 8
+	bullet_damage = 5
 	super._ready()
 
 func apply_direction_settings(dir: String) -> void:

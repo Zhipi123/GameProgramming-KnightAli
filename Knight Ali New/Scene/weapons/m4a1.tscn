@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://ivaw7ahvfn6e"]
 
 [ext_resource type="PackedScene" uid="uid://cda8vfmgncnhp" path="res://Scene/weapon.tscn" id="1_vjua3"]
-[ext_resource type="Texture2D" uid="uid://bhfc22n2838ad" path="res://weapon/a1/m4a1.png" id="2_cdlge"]
 [ext_resource type="Script" path="res://Script/weapons/m4a1.gd" id="2_er6dg"]
+[ext_resource type="Texture2D" uid="uid://cgnn7piw5ypil" path="res://weapon/a1/M4A1-Star.png" id="3_ad0g6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_55adx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cdlge")
+"texture": ExtResource("3_ad0g6")
 }],
 "loop": true,
 "name": &"default",
@@ -22,6 +22,7 @@ script = ExtResource("2_er6dg")
 position = Vector2(57, -3)
 
 [node name="AnimatedSprite2D" parent="." index="2"]
-position = Vector2(6, 4)
-scale = Vector2(0.095, 0.095)
+position = Vector2(1, 2)
+scale = Vector2(0.155, 0.155)
 sprite_frames = SubResource("SpriteFrames_55adx")
+offset = Vector2(60, 0)

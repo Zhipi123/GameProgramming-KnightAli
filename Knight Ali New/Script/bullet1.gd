@@ -8,7 +8,7 @@ var direction: Vector2
 func _ready():
 	if global.current_scene == "HomeScene":
 		scale = Vector2(1, 1)
-	elif global.current_scene == "GrassScene":
+	elif global.current_scene == "GrassScene" or global.current_scene == "SnowScene":
 		scale = Vector2(0.69, 0.69)
 	await get_tree().create_timer(1.3).timeout
 	queue_free()
@@ -24,3 +24,6 @@ func _on_body_entered(body):
 	if body.has_method("enemy"):
 		body.get_damage(damage)
 		queue_free()
+	elif body is StaticBody2D or body is CharacterBody2D:
+		queue_free()
+

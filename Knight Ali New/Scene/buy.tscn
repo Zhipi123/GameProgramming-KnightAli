@@ -1,0 +1,378 @@
+[gd_scene load_steps=17 format=3 uid="uid://dnlklyksn82cl"]
+
+[ext_resource type="Script" path="res://Script/buy.gd" id="1_2anhs"]
+[ext_resource type="Texture2D" uid="uid://bb53elwj3whrj" path="res://Background/Window of purchase.png" id="1_txihc"]
+[ext_resource type="Texture2D" uid="uid://cgnn7piw5ypil" path="res://weapon/a1/M4A1-Star.png" id="4_ritkk"]
+[ext_resource type="Texture2D" uid="uid://caaar3pxxwsf8" path="res://weapon/glock-sunrise/Glock-Sunrise.png" id="5_uj0id"]
+[ext_resource type="Texture2D" uid="uid://c408fapefhcup" path="res://weapon/spas12/SPAS12-Pluto.png" id="6_j7pvs"]
+[ext_resource type="Texture2D" uid="uid://cmhawo3ku00d0" path="res://weapon/awp/AWP-Snow.png" id="7_e177l"]
+[ext_resource type="Texture2D" uid="uid://cnsw4vquj771s" path="res://weapon/ak/Ak47-Flame.png" id="8_dbod1"]
+[ext_resource type="Texture2D" uid="uid://bs8uvaw1xnjlf" path="res://weapon/famas/famas-ancient.png" id="9_nvgdi"]
+[ext_resource type="Texture2D" uid="uid://dkp04ku7kocpr" path="res://weapon/mac10/mac10-dark.png" id="10_dsvaf"]
+[ext_resource type="Texture2D" uid="uid://c7e8h6dw2paof" path="res://weapon/qbz95/QBZ95-hope.png" id="10_qfnky"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v2ncb"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_40nri"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_2sat0"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5onu"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sl2dc"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_0v7mi"]
+font_size = 32
+
+[node name="Buy" type="Node2D"]
+script = ExtResource("1_2anhs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.1801, 2.15738)
+texture = ExtResource("1_txihc")
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 951.0
+offset_top = 527.0
+offset_right = 1076.0
+offset_bottom = 595.0
+text = "EXIT!"
+
+[node name="Advertisement" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 412.0
+offset_right = 747.0
+offset_bottom = 499.0
+text = "While you're at it, why not make the most of it?
+Buy some before you leave!!!"
+label_settings = SubResource("LabelSettings_v2ncb")
+
+[node name="Buy_glock" type="Button" parent="."]
+offset_left = 186.0
+offset_top = 187.0
+offset_right = 243.0
+offset_bottom = 218.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton2" type="Button" parent="."]
+offset_left = 396.0
+offset_top = 189.0
+offset_right = 453.0
+offset_bottom = 220.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton3" type="Button" parent="."]
+offset_left = 602.0
+offset_top = 190.0
+offset_right = 659.0
+offset_bottom = 221.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton4" type="Button" parent="."]
+offset_left = 809.0
+offset_top = 192.0
+offset_right = 866.0
+offset_bottom = 223.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton5" type="Button" parent="."]
+offset_left = 1021.0
+offset_top = 363.0
+offset_right = 1078.0
+offset_bottom = 394.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton6" type="Button" parent="."]
+offset_left = 1025.0
+offset_top = 187.0
+offset_right = 1082.0
+offset_bottom = 218.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton7" type="Button" parent="."]
+offset_left = 815.0
+offset_top = 365.0
+offset_right = 872.0
+offset_bottom = 396.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton8" type="Button" parent="."]
+offset_left = 609.0
+offset_top = 363.0
+offset_right = 666.0
+offset_bottom = 394.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buy_m4" type="Button" parent="."]
+offset_left = 398.0
+offset_top = 359.0
+offset_right = 455.0
+offset_bottom = 390.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buybutton10" type="Button" parent="."]
+offset_left = 187.0
+offset_top = 358.0
+offset_right = 244.0
+offset_bottom = 389.0
+text = "Buy it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="M4a1-star" type="Sprite2D" parent="."]
+position = Vector2(368, 294)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("4_ritkk")
+
+[node name="Glock-sunrise" type="Sprite2D" parent="."]
+position = Vector2(160, 120)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_uj0id")
+
+[node name="Spas12-pluto" type="Sprite2D" parent="."]
+position = Vector2(578, 123)
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("6_j7pvs")
+
+[node name="Awp-snow" type="Sprite2D" parent="."]
+position = Vector2(992, 126)
+scale = Vector2(0.264, 0.246)
+texture = ExtResource("7_e177l")
+flip_h = true
+
+[node name="Ak47-flame" type="Sprite2D" parent="."]
+position = Vector2(788, 125)
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("8_dbod1")
+
+[node name="Famas-ancient" type="Sprite2D" parent="."]
+position = Vector2(159, 306)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_nvgdi")
+
+[node name="Mac10-dark" type="Sprite2D" parent="."]
+position = Vector2(367, 124)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("10_dsvaf")
+flip_h = true
+
+[node name="Qbz95-hope" type="Sprite2D" parent="."]
+position = Vector2(576, 297)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("10_qfnky")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 78.0
+offset_top = 184.0
+offset_right = 184.0
+offset_bottom = 207.0
+text = "Glock-Sunrise"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 8"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 283.0
+offset_top = 185.0
+offset_right = 389.0
+offset_bottom = 208.0
+text = "MAC10-Dark"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label2"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 8"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 293.0
+offset_top = 358.0
+offset_right = 399.0
+offset_bottom = 381.0
+text = "M4A1-Star"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label3"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 10"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 86.0
+offset_top = 359.0
+offset_right = 192.0
+offset_bottom = 382.0
+text = "FAMAS-Tiger"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label4"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 10"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 911.0
+offset_top = 184.0
+offset_right = 1017.0
+offset_bottom = 207.0
+text = "Glock-Sunrise"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label5"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 50"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 703.0
+offset_top = 185.0
+offset_right = 809.0
+offset_bottom = 208.0
+text = "AK47-Flames"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label6"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 12"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 491.0
+offset_top = 186.0
+offset_right = 597.0
+offset_bottom = 209.0
+text = "SPAS12-Pluto"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label7"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 20"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 495.0
+offset_top = 358.0
+offset_right = 601.0
+offset_bottom = 381.0
+text = "QBZ95-Hope"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label8"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 10"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 910.0
+offset_top = 361.0
+offset_right = 1016.0
+offset_bottom = 384.0
+text = "Glock-Sunrise"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label9"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 12"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 702.0
+offset_top = 360.0
+offset_right = 808.0
+offset_bottom = 383.0
+text = "Glock-Sunrise"
+label_settings = SubResource("LabelSettings_40nri")
+
+[node name="damage" type="Label" parent="Label10"]
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Damage: 12"
+label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Currentcoins" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 31.0
+offset_right = 189.0
+offset_bottom = 59.0
+text = "Current Coins:"
+label_settings = SubResource("LabelSettings_w5onu")
+
+[node name="coins" type="Label" parent="Currentcoins"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 1.0
+offset_right = 190.0
+offset_bottom = 29.0
+text = "60"
+label_settings = SubResource("LabelSettings_sl2dc")
+
+[node name="FailWindow" type="Window" parent="."]
+title = "Alert!"
+initial_position = 2
+size = Vector2i(200, 100)
+
+[node name="Label" type="Label" parent="FailWindow"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "You don't have 
+enough money!"
+label_settings = SubResource("LabelSettings_0v7mi")
+horizontal_alignment = 1
+
+[node name="SuccessWindow" type="Window" parent="."]
+title = "Alert!"
+initial_position = 2
+size = Vector2i(200, 100)
+
+[node name="Label" type="Label" parent="SuccessWindow"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Successfully
+bought!"
+label_settings = SubResource("LabelSettings_0v7mi")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Buy_glock" to="." method="_on_buy_glock_pressed"]
+[connection signal="pressed" from="Buy_m4" to="." method="_on_buy_m_4_pressed"]
+[connection signal="close_requested" from="FailWindow" to="." method="_on_fail_window_close_requested"]
+[connection signal="close_requested" from="SuccessWindow" to="." method="_on_success_window_close_requested"]

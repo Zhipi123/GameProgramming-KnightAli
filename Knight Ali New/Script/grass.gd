@@ -1,6 +1,11 @@
 extends Node2D
 
+@onready var alert = $Window
+
 func _ready():
+	print(global.weapon_scene)
+	global.scene_enemy_count = 0
+	alert.hide()
 	global.current_scene = "GrassScene"
 	print(global.current_scene)
 	print(global.previous_scene)
@@ -44,7 +49,6 @@ func _on_correct_road_body_entered(body):
 		global.previous_scene = global.current_scene
 		global.next_scene = "res://Scene/snow.tscn"
 
-
 func _on_correct_road_body_exited(body):
 	if body.has_method("player"):
 		global.transition_scene = false
@@ -53,4 +57,23 @@ func change_scene():
 	if global.transition_scene:
 		get_tree().change_scene_to_file(global.next_scene)
 		global.finish_changescenes()
+
+func _on_window_close_requested():
+	alert.hide()
+
+func _on_wrong_road_1_body_entered(body):
+	if body.has_method("player"):
+		alert.show()
+func _on_wrong_road_2_body_entered(body):
+	if body.has_method("player"):
+		alert.show()
+func _on_wrong_road_3_body_entered(body):
+	if body.has_method("player"):
+		alert.show()
+func _on_wrong_road_4_body_entered(body):
+	if body.has_method("player"):
+		alert.show()
+func _on_wrong_road_5_body_entered(body):
+	if body.has_method("player"):
+		alert.show()
 

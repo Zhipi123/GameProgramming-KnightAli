@@ -1,9 +1,51 @@
-[gd_scene load_steps=42 format=3 uid="uid://b51rtqi3usy54"]
+[gd_scene load_steps=54 format=3 uid="uid://b51rtqi3usy54"]
 
 [ext_resource type="PackedScene" uid="uid://b6mol0kk425h6" path="res://Scene/enemy.tscn" id="1_tfc85"]
 [ext_resource type="Texture2D" uid="uid://5p3gni15tslf" path="res://enemy/Slime1/Idle/Slime1_Idle_full.png" id="2_2oitk"]
+[ext_resource type="Script" path="res://Scene/enemy/enemy_slime_1.gd" id="2_ggwqx"]
 [ext_resource type="Texture2D" uid="uid://bqef6pm8iwjqa" path="res://enemy/Slime1/Death/Slime1_Death_full.png" id="2_hdy6l"]
 [ext_resource type="Texture2D" uid="uid://b5q2ns1vm4g0f" path="res://enemy/Slime1/Run/Slime1_Run_full.png" id="3_b4327"]
+[ext_resource type="Texture2D" uid="uid://yqfqycjf8ess" path="res://enemy/Slime1/Attack/Slime1_Attack_full.png" id="3_mfjny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgbdh"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iky0p"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jieq7"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_had5f"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf78r"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a2px"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs43e"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdq2c"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw1mf"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46o10"]
+atlas = ExtResource("3_mfjny")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tfcd"]
 atlas = ExtResource("2_hdy6l")
@@ -153,6 +195,41 @@ region = Rect2(320, 64, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rgbdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iky0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jieq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_had5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf78r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a2px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs43e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdq2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw1mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46o10")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0tfcd")
 }, {
 "duration": 1.0,
@@ -291,7 +368,9 @@ animations = [{
 }]
 
 [node name="enemy_slime1" instance=ExtResource("1_tfc85")]
+script = ExtResource("2_ggwqx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
 sprite_frames = SubResource("SpriteFrames_q361j")
-animation = &"idle"
+animation = &"attack"
+frame_progress = 0.946034

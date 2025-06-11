@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c42cepk3t631m"]
+
+[ext_resource type="PackedScene" uid="uid://ro7ml0egqh8" path="res://Scene/enemy_spawner.tscn" id="1_nup18"]
+[ext_resource type="Script" path="res://Script/enemy_spawner_grass.gd" id="2_572yn"]
+
+[node name="enemy_spawner_grass" instance=ExtResource("1_nup18")]
+script = ExtResource("2_572yn")

@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	global.scene_enemy_count = 0
 	global.current_scene = "HomeScene" 
 	
 	if global.player_at_home_first == true:

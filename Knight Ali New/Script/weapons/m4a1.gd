@@ -11,13 +11,13 @@ func apply_direction_settings(dir: String) -> void:
 		position.x = 30
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.flip_v = false
-		$Marker2D.position = Vector2(60, 0)
+		$Marker2D.position = Vector2(60, -8)
 		$Marker2D.rotation_degrees = 0
 	elif dir == "left":
 		scale.x = -1
 		position.x = -35
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.flip_v = true
-		$Marker2D.position = Vector2(-80, 8)
+		$Marker2D.position = Vector2(-70, 8)
 		$Marker2D.rotation_degrees = 180
 

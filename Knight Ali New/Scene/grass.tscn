@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbeflneripred"]
+[gd_scene load_steps=31 format=3 uid="uid://dbeflneripred"]
 
 [ext_resource type="Script" path="res://Script/grass.gd" id="1_0hi7w"]
 [ext_resource type="Texture2D" uid="uid://c1b43jlrtpfhm" path="res://Items/Grass&Road1.png" id="1_8i5ts"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://exluca04i7q7" path="res://Scene/player.tscn" id="5_q6snc"]
 [ext_resource type="Texture2D" uid="uid://dhvjdkak37xra" path="res://Items/GrassBig-export.png" id="6_0lar3"]
 [ext_resource type="Texture2D" uid="uid://cidt0qvllkv8t" path="res://Shadows/shadow.png" id="6_2ukpi"]
-[ext_resource type="PackedScene" uid="uid://ro7ml0egqh8" path="res://Scene/enemy_spawner.tscn" id="10_k37fs"]
+[ext_resource type="PackedScene" uid="uid://c42cepk3t631m" path="res://Scene/enemy_spawner_grass.tscn" id="10_848d4"]
+[ext_resource type="Texture2D" uid="uid://db18gmf5lwqf1" path="res://Items/Tree&Stone.png" id="11_mtk6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsi1s"]
 texture = ExtResource("1_8i5ts")
@@ -85,11 +86,45 @@ size = Vector2(27.5, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3faq"]
 size = Vector2(35, 13.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvfyo"]
+size = Vector2(22.5, 36.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_56oo3"]
+font_size = 36
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujh5n"]
 size = Vector2(36.5, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvfyo"]
-size = Vector2(22.5, 36.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u28t8"]
+size = Vector2(20, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i7nb"]
+size = Vector2(16, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7gk6"]
+size = Vector2(18, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u86sa"]
+size = Vector2(42, 18)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1w07m"]
+texture = ExtResource("11_mtk6i")
+1:1/size_in_atlas = Vector2i(2, 4)
+1:1/0 = 0
+1:1/0/y_sort_origin = -15
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.5, -13.25, 15.75, -13, 16.5, 11.75, 5.5, 15, 4.5, 20, 11.75, 20.25, 12, 26.5, 7, 29.25, -4.5, 29.75, -11.25, 26.75, -9.5, 20, -3, 20, -3.5, 14.75, -14.25, 10.5)
+0:8/size_in_atlas = Vector2i(4, 3)
+0:8/0 = 0
+0:8/0/y_sort_origin = -20
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.5, -24, 12, -23.5, 16.25, -15.25, 18, 1.75, 15.5, 9.25, -15.5, 9, -19.25, 1.75, -16, -14)
+
+[sub_resource type="TileSet" id="TileSet_whxcf"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_1w07m")
 
 [node name="GrassScene" type="Node2D"]
 y_sort_enabled = true
@@ -157,25 +192,6 @@ scale = Vector2(0.497, 0.497)
 position = Vector2(697, 278)
 shape = SubResource("RectangleShape2D_n3faq")
 
-[node name="enemy_spawner" parent="." instance=ExtResource("10_k37fs")]
-position = Vector2(68, 186)
-
-[node name="enemy_spawner2" parent="." instance=ExtResource("10_k37fs")]
-position = Vector2(393, 381)
-
-[node name="enemy_spawner3" parent="." instance=ExtResource("10_k37fs")]
-position = Vector2(799, 493)
-
-[node name="enemy_spawner4" parent="." instance=ExtResource("10_k37fs")]
-position = Vector2(1021, 211)
-
-[node name="wrong_road1" type="Area2D" parent="."]
-position = Vector2(454, 688)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road1"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_ujh5n")
-
 [node name="correct_road" type="Area2D" parent="."]
 position = Vector2(1173, 590)
 
@@ -183,10 +199,85 @@ position = Vector2(1173, 590)
 position = Vector2(-25, -1)
 shape = SubResource("RectangleShape2D_fvfyo")
 
+[node name="Window" type="Window" parent="."]
+title = "Alert!"
+initial_position = 2
+size = Vector2i(400, 200)
+
+[node name="Label" type="Label" parent="Window"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "You see a wooden sign 
+that says the road is 
+incorrect!"
+label_settings = SubResource("LabelSettings_56oo3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="wrong_road1" type="Area2D" parent="."]
+position = Vector2(454, 688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road1"]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_ujh5n")
+
+[node name="wrong_road2" type="Area2D" parent="."]
+position = Vector2(-62, 310)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road2"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_u28t8")
+
+[node name="wrong_road3" type="Area2D" parent="."]
+position = Vector2(-66, 528)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road3"]
+position = Vector2(2, -2)
+shape = SubResource("RectangleShape2D_7i7nb")
+
+[node name="wrong_road4" type="Area2D" parent="."]
+position = Vector2(1146, 318)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road4"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_t7gk6")
+
+[node name="wrong_road5" type="Area2D" parent="."]
+position = Vector2(960, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road5"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_u86sa")
+
+[node name="enemy_spawner_grass" parent="." instance=ExtResource("10_848d4")]
+position = Vector2(105, 219)
+
+[node name="enemy_spawner_grass2" parent="." instance=ExtResource("10_848d4")]
+position = Vector2(390, 393)
+
+[node name="enemy_spawner_grass3" parent="." instance=ExtResource("10_848d4")]
+position = Vector2(475, 60)
+
+[node name="enemy_spawner_grass4" parent="." instance=ExtResource("10_848d4")]
+position = Vector2(968, 493)
+
+[node name="TileMap3(Y-Sort)" type="TileMap" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_set = SubResource("TileSet_whxcf")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(917505, 65537, 1, 2097168, 65537, 1, 2031653, 65537, 1, 852024, 65537, 1, 2555960, 65537, 1, 1048599, 1, 8, 1572900, 1, 8, 2031666, 1, 8, 983103, 1, 8, 1900552, 1, 8, 2359320, 1, 8)
+
 [connection signal="body_entered" from="GoBackToHome" to="." method="_on_go_back_to_home_body_entered"]
 [connection signal="body_exited" from="GoBackToHome" to="." method="_on_go_back_to_home_body_exited"]
 [connection signal="body_entered" from="GoIntoShop" to="." method="_on_go_into_shop_body_entered"]
 [connection signal="body_exited" from="GoIntoShop" to="." method="_on_go_into_shop_body_exited"]
-[connection signal="body_entered" from="wrong_road1" to="." method="_on_wrong_road_1_body_entered"]
 [connection signal="body_entered" from="correct_road" to="." method="_on_correct_road_body_entered"]
 [connection signal="body_exited" from="correct_road" to="." method="_on_correct_road_body_exited"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="body_entered" from="wrong_road1" to="." method="_on_wrong_road_1_body_entered"]
+[connection signal="body_entered" from="wrong_road2" to="." method="_on_wrong_road_2_body_entered"]
+[connection signal="body_entered" from="wrong_road3" to="." method="_on_wrong_road_3_body_entered"]
+[connection signal="body_entered" from="wrong_road4" to="." method="_on_wrong_road_4_body_entered"]
+[connection signal="body_entered" from="wrong_road5" to="." method="_on_wrong_road_5_body_entered"]

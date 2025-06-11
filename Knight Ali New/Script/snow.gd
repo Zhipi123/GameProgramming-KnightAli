@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	global.scene_enemy_count = 0
 	global.current_scene = "SnowScene"
 	print(global.current_scene)
 	print(global.previous_scene)
