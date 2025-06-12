@@ -21,7 +21,7 @@ var grass_to_home_posy = 236
 var grass_to_shop_posx = 697
 var grass_to_shop_posy = 304
 
-var grass_to_snow_posx = 32
+var grass_to_snow_posx = 50
 var grass_to_snow_posy = 488
 #shop x,y
 var player_come_shop_posx = 937
@@ -33,15 +33,24 @@ var snow_to_grass_posy = 591
 var grass_to_snowshop_posx = 215
 var grass_to_snowshop_posy = 245
 
+var snow_to_mount_posx = 29
+var snow_to_mount_posy = 110
+
 var after_buy_posx = 507
 var after_buy_posy = 324
 
 var player_health = 100
 
-var current_coins = 10
-var kill_enemies = 0
+var current_coins = 10000
+var kill_enemies = 79
 var buy_or_not = false
 var scene_enemy_count = 0
+
+var first_to_snow = true
+var first_to_mount = true
+var first_to_home = true
+var first_to_grass = true
+var is_boss_dead = false
 
 var weapon_scene: PackedScene = preload("res://Scene/weapons/glock.tscn")
 var current_weapon_scene: PackedScene = weapon_scene

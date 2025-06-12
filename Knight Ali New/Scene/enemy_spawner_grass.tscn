@@ -5,3 +5,6 @@
 
 [node name="enemy_spawner_grass" instance=ExtResource("1_nup18")]
 script = ExtResource("2_572yn")
+
+[node name="spawn_gap" parent="." index="1"]
+wait_time = 25.0

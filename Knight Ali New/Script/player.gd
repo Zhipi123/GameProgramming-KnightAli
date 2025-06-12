@@ -3,10 +3,11 @@ extends CharacterBody2D
 var speed = 100
 var health = 100
 var player_alive = true
+var is_dead = false
 var current_direction = "none"
 
-var weapon: Node2D = null  # 由 equip_weapon 加载
-#var weapon_scene: PackedScene = preload("res://Scene/weapons/m4a1.tscn") 默认武器
+var weapon: Node2D = null  
+#var weapon_scene: PackedScene = preload("res://Scene/weapons/m4a1.tscn") no need
 
 var is_shooting = false
 var enemy_in_attack_range = false
@@ -17,6 +18,7 @@ const SHOOT_COOLDOWN_DURATION = 0.5
 var previous_direction = "none"
 
 func _ready():
+	player_alive = true
 	health = global.player_health
 	equip_weapon(global.weapon_scene)
 
@@ -29,6 +31,14 @@ func equip_weapon(scene: PackedScene):
 	weapon.position = Vector2.ZERO
 
 func _process(delta):
+	if health <= 0 and player_alive:
+		player_alive = false
+		health = 0
+		$AnimatedSprite2D.play("death")
+		print("player died!")
+		await get_tree().create_timer(1).timeout 
+		call_deferred("go_game_over")
+		queue_free()
 	if global.weapon_scene !=global.current_weapon_scene:
 		equip_weapon(global.weapon_scene)
 		global.current_weapon_scene = global.weapon_scene
@@ -40,11 +50,25 @@ func _process(delta):
 		$Camera2D.limit_right = 1140
 		$Camera2D.limit_bottom = 640
 		speed = 300
-	elif global.current_scene == "GrassScene" or global.current_scene == "SnowScene":
+	elif global.current_scene == "GrassScene":
 		$Camera2D.zoom = Vector2(2.3, 2.3)
 		$Camera2D.limit_left = 0
 		$Camera2D.limit_top = 0
-		$Camera2D.limit_right = 1200
+		$Camera2D.limit_right = 1220
+		$Camera2D.limit_bottom = 640
+		speed = 150
+	elif global.current_scene == "SnowScene":
+		$Camera2D.zoom = Vector2(2.3, 2.3)
+		$Camera2D.limit_left = 0
+		$Camera2D.limit_top = 0
+		$Camera2D.limit_right = 1140
+		$Camera2D.limit_bottom = 640
+		speed = 150
+	elif global.current_scene == "MountScene":
+		$Camera2D.zoom = Vector2(2.3, 2.3)
+		$Camera2D.limit_left = 0
+		$Camera2D.limit_top = 0
+		$Camera2D.limit_right = 1140
 		$Camera2D.limit_bottom = 640
 		speed = 150
 	elif global.current_scene == "ShopScene":
@@ -72,13 +96,9 @@ func _process(delta):
 	update_weapon_aim()
 
 func _physics_process(delta):
-	var input_vector = player_movement(delta)
-	on_attack()
-	if health <= 0:
-		player_alive = false
-		health = 0
-		print("player died!")
-		queue_free()
+	if player_alive:
+		var input_vector = player_movement(delta)
+		on_attack()
 
 	if is_shooting and weapon:
 		weapon.setup_direction(weapon.aim_direction)
@@ -126,7 +146,6 @@ func reset_weapon_angle():
 
 func play_animation(movement):
 	var anim = $AnimatedSprite2D
-
 	if current_direction == "right":
 		anim.play("walkright_girl" if movement == 1 else "idle_girl_right")
 	elif current_direction == "left":
@@ -165,6 +184,9 @@ func on_attack():
 		$on_attack_cooldown.start()
 		print(health)
 
+func on_bullet(damage):
+	health -= damage
+
 func _on_on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 	
@@ -178,6 +200,9 @@ func update_health():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
+
+func go_game_over():
+	get_tree().change_scene_to_file("res://Scene/GUI/game_over.tscn")
 
 func _on_regin_timer_timeout():
 	if health < 100:

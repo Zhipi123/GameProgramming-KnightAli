@@ -1,7 +1,16 @@
 extends Node2D
 
+@onready var alert = $Window
+
 func _ready():
+	$AudioStreamPlayer2D.play()
+	if global.first_to_home == true:
+		global.first_to_home = false
+		alert.show()
+		get_tree().paused = true
 	global.scene_enemy_count = 0
+	global.current_coins = 100
+	global.kill_enemies = 0
 	global.current_scene = "HomeScene" 
 	
 	if global.player_at_home_first == true:
@@ -26,6 +35,11 @@ func change_scene():
 	if global.transition_scene == true:
 		if global.current_scene == "HomeScene":
 			global.previous_scene = "HomeScene"
-			get_tree().change_scene_to_file("res://Scene/Grass.tscn")
+			get_tree().change_scene_to_file("res://Scene/grass.tscn")
 			global.player_at_home_first = false
 			global.finish_changescenes()
+
+
+func _on_window_close_requested():
+	alert.hide()
+	get_tree().paused = false

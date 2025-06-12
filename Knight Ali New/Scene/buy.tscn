@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnlklyksn82cl"]
+[gd_scene load_steps=20 format=3 uid="uid://dnlklyksn82cl"]
 
 [ext_resource type="Script" path="res://Script/buy.gd" id="1_2anhs"]
 [ext_resource type="Texture2D" uid="uid://bb53elwj3whrj" path="res://Background/Window of purchase.png" id="1_txihc"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bs8uvaw1xnjlf" path="res://weapon/famas/famas-ancient.png" id="9_nvgdi"]
 [ext_resource type="Texture2D" uid="uid://dkp04ku7kocpr" path="res://weapon/mac10/mac10-dark.png" id="10_dsvaf"]
 [ext_resource type="Texture2D" uid="uid://c7e8h6dw2paof" path="res://weapon/qbz95/QBZ95-hope.png" id="10_qfnky"]
+[ext_resource type="Texture2D" uid="uid://d3vfntjqno4r5" path="res://weapon/aa12/aa12_dragon.png" id="11_j3dq3"]
+[ext_resource type="Texture2D" uid="uid://udekdsoy6qqg" path="res://weapon/DIICSU!/question_mark.png" id="12_bv8j8"]
+[ext_resource type="AudioStream" uid="uid://r83j3bq38c1p" path="res://bgm/Wholesome.mp3" id="13_hgfkj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v2ncb"]
 font_size = 25
@@ -31,6 +34,7 @@ font_size = 20
 font_size = 32
 
 [node name="Buy" type="Node2D"]
+scale = Vector2(1.67157, 1.70454)
 script = ExtResource("1_2anhs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -47,10 +51,10 @@ offset_bottom = 595.0
 text = "EXIT!"
 
 [node name="Advertisement" type="Label" parent="."]
-offset_left = 66.0
-offset_top = 412.0
-offset_right = 747.0
-offset_bottom = 499.0
+offset_left = 158.769
+offset_top = 531.54
+offset_right = 839.769
+offset_bottom = 618.54
 text = "While you're at it, why not make the most of it?
 Buy some before you leave!!!"
 label_settings = SubResource("LabelSettings_v2ncb")
@@ -63,7 +67,7 @@ offset_bottom = 218.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton2" type="Button" parent="."]
+[node name="Buy_mac10" type="Button" parent="."]
 offset_left = 396.0
 offset_top = 189.0
 offset_right = 453.0
@@ -71,7 +75,7 @@ offset_bottom = 220.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton3" type="Button" parent="."]
+[node name="Buy_spas" type="Button" parent="."]
 offset_left = 602.0
 offset_top = 190.0
 offset_right = 659.0
@@ -79,7 +83,7 @@ offset_bottom = 221.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton4" type="Button" parent="."]
+[node name="Buy_ak" type="Button" parent="."]
 offset_left = 809.0
 offset_top = 192.0
 offset_right = 866.0
@@ -87,7 +91,7 @@ offset_bottom = 223.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton5" type="Button" parent="."]
+[node name="Buy_mystery" type="Button" parent="."]
 offset_left = 1021.0
 offset_top = 363.0
 offset_right = 1078.0
@@ -95,7 +99,7 @@ offset_bottom = 394.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton6" type="Button" parent="."]
+[node name="Buy_awp" type="Button" parent="."]
 offset_left = 1025.0
 offset_top = 187.0
 offset_right = 1082.0
@@ -103,7 +107,7 @@ offset_bottom = 218.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton7" type="Button" parent="."]
+[node name="Buy_aa12" type="Button" parent="."]
 offset_left = 815.0
 offset_top = 365.0
 offset_right = 872.0
@@ -111,7 +115,7 @@ offset_bottom = 396.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton8" type="Button" parent="."]
+[node name="Buy_qbz" type="Button" parent="."]
 offset_left = 609.0
 offset_top = 363.0
 offset_right = 666.0
@@ -127,7 +131,7 @@ offset_bottom = 390.0
 text = "Buy it!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Buybutton10" type="Button" parent="."]
+[node name="Buy_famas" type="Button" parent="."]
 offset_left = 187.0
 offset_top = 358.0
 offset_right = 244.0
@@ -154,7 +158,6 @@ texture = ExtResource("6_j7pvs")
 position = Vector2(992, 126)
 scale = Vector2(0.264, 0.246)
 texture = ExtResource("7_e177l")
-flip_h = true
 
 [node name="Ak47-flame" type="Sprite2D" parent="."]
 position = Vector2(788, 125)
@@ -162,7 +165,7 @@ scale = Vector2(0.27, 0.27)
 texture = ExtResource("8_dbod1")
 
 [node name="Famas-ancient" type="Sprite2D" parent="."]
-position = Vector2(159, 306)
+position = Vector2(159.967, 296.522)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_nvgdi")
 
@@ -170,7 +173,6 @@ texture = ExtResource("9_nvgdi")
 position = Vector2(367, 124)
 scale = Vector2(0.205, 0.205)
 texture = ExtResource("10_dsvaf")
-flip_h = true
 
 [node name="Qbz95-hope" type="Sprite2D" parent="."]
 position = Vector2(576, 297)
@@ -193,6 +195,14 @@ offset_bottom = 40.0
 text = "Damage: 8"
 label_settings = SubResource("LabelSettings_2sat0")
 
+[node name="Price" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 93.9495
+offset_top = -38.9761
+offset_right = 159.95
+offset_bottom = -15.9761
+text = "Price: 70"
+
 [node name="Label2" type="Label" parent="."]
 offset_left = 283.0
 offset_top = 185.0
@@ -202,11 +212,20 @@ text = "MAC10-Dark"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label2"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
 text = "Damage: 8"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label2"]
+layout_mode = 0
+offset_left = 90.2563
+offset_top = -38.6813
+offset_right = 165.256
+offset_bottom = -15.6813
+text = "Price: 120"
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 293.0
@@ -217,11 +236,20 @@ text = "M4A1-Star"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label3"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
 text = "Damage: 10"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label3"]
+layout_mode = 0
+offset_left = 80.2563
+offset_top = -40.7602
+offset_right = 146.256
+offset_bottom = -17.7602
+text = "Price: 200"
 
 [node name="Label4" type="Label" parent="."]
 offset_left = 86.0
@@ -232,26 +260,44 @@ text = "FAMAS-Tiger"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label4"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
 text = "Damage: 10"
 label_settings = SubResource("LabelSettings_2sat0")
 
+[node name="Price" type="Label" parent="Label4"]
+layout_mode = 0
+offset_left = 76.9626
+offset_top = -41.1128
+offset_right = 151.963
+offset_bottom = -18.1128
+text = "Price: 160"
+
 [node name="Label5" type="Label" parent="."]
 offset_left = 911.0
 offset_top = 184.0
 offset_right = 1017.0
 offset_bottom = 207.0
-text = "Glock-Sunrise"
+text = "AWP-Glacier"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label5"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
 text = "Damage: 50"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label5"]
+layout_mode = 0
+offset_left = 93.9495
+offset_top = -38.9761
+offset_right = 159.95
+offset_bottom = -15.9761
+text = "Price: 180"
 
 [node name="Label6" type="Label" parent="."]
 offset_left = 703.0
@@ -262,11 +308,20 @@ text = "AK47-Flames"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label6"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
 text = "Damage: 12"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label6"]
+layout_mode = 0
+offset_left = 93.9495
+offset_top = -38.9761
+offset_right = 159.95
+offset_bottom = -15.9761
+text = "Price: 300"
 
 [node name="Label7" type="Label" parent="."]
 offset_left = 491.0
@@ -277,11 +332,20 @@ text = "SPAS12-Pluto"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label7"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
-text = "Damage: 20"
+text = "Damage: 30"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label7"]
+layout_mode = 0
+offset_left = 93.7483
+offset_top = -40.9761
+offset_right = 159.748
+offset_bottom = -17.9761
+text = "Price: 250"
 
 [node name="Label8" type="Label" parent="."]
 offset_left = 495.0
@@ -292,41 +356,68 @@ text = "QBZ95-Hope"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label8"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
 text = "Damage: 10"
 label_settings = SubResource("LabelSettings_2sat0")
 
+[node name="Price" type="Label" parent="Label8"]
+layout_mode = 0
+offset_left = 87.3518
+offset_top = -40.1128
+offset_right = 162.352
+offset_bottom = -17.1128
+text = "Price: 260"
+
 [node name="Label9" type="Label" parent="."]
 offset_left = 910.0
 offset_top = 361.0
 offset_right = 1016.0
 offset_bottom = 384.0
-text = "Glock-Sunrise"
+text = "Mystery Gun"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label9"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
-text = "Damage: 12"
+text = "Damage: ???"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label9"]
+layout_mode = 0
+offset_left = 83.9522
+offset_top = -40.5231
+offset_right = 167.952
+offset_bottom = -17.5231
+text = "Price: 1000"
 
 [node name="Label10" type="Label" parent="."]
 offset_left = 702.0
 offset_top = 360.0
 offset_right = 808.0
 offset_bottom = 383.0
-text = "Glock-Sunrise"
+text = "AA12-Dragon"
 label_settings = SubResource("LabelSettings_40nri")
 
 [node name="damage" type="Label" parent="Label10"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 80.0
 offset_bottom = 40.0
-text = "Damage: 12"
+text = "Damage: 30"
 label_settings = SubResource("LabelSettings_2sat0")
+
+[node name="Price" type="Label" parent="Label10"]
+layout_mode = 0
+offset_left = 93.9495
+offset_top = -38.9761
+offset_right = 159.95
+offset_bottom = -15.9761
+text = "Price: 500"
 
 [node name="Currentcoins" type="Label" parent="."]
 offset_left = 50.0
@@ -348,13 +439,14 @@ label_settings = SubResource("LabelSettings_sl2dc")
 [node name="FailWindow" type="Window" parent="."]
 title = "Alert!"
 initial_position = 2
-size = Vector2i(200, 100)
+size = Vector2i(300, 150)
+visible = false
 
 [node name="Label" type="Label" parent="FailWindow"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "You don't have 
-enough money!"
+text = "    You don't have 
+    enough money!"
 label_settings = SubResource("LabelSettings_0v7mi")
 horizontal_alignment = 1
 
@@ -362,6 +454,7 @@ horizontal_alignment = 1
 title = "Alert!"
 initial_position = 2
 size = Vector2i(200, 100)
+visible = false
 
 [node name="Label" type="Label" parent="SuccessWindow"]
 offset_right = 40.0
@@ -371,8 +464,40 @@ bought!"
 label_settings = SubResource("LabelSettings_0v7mi")
 horizontal_alignment = 1
 
+[node name="Aa12Dragon" type="Sprite2D" parent="."]
+position = Vector2(783.059, 294.58)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("11_j3dq3")
+
+[node name="QuestionMark" type="Sprite2D" parent="."]
+position = Vector2(991.556, 293.285)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("12_bv8j8")
+
+[node name="important" type="Label" parent="."]
+offset_left = 165.36
+offset_top = 413.707
+offset_right = 846.36
+offset_bottom = 524.707
+text = "IMPORTANT!: If you successfully bought a gun, it will
+immediately substitute what you have in your hand!
+What you have just now will disappear!"
+label_settings = SubResource("LabelSettings_v2ncb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_hgfkj")
+stream_paused = true
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Buy_glock" to="." method="_on_buy_glock_pressed"]
+[connection signal="pressed" from="Buy_mac10" to="." method="_on_buy_mac_10_pressed"]
+[connection signal="pressed" from="Buy_spas" to="." method="_on_buy_spas_pressed"]
+[connection signal="pressed" from="Buy_ak" to="." method="_on_buy_ak_pressed"]
+[connection signal="pressed" from="Buy_mystery" to="." method="_on_buy_mystery_pressed"]
+[connection signal="pressed" from="Buy_awp" to="." method="_on_buy_awp_pressed"]
+[connection signal="pressed" from="Buy_aa12" to="." method="_on_buy_aa_12_pressed"]
+[connection signal="pressed" from="Buy_qbz" to="." method="_on_buy_qbz_pressed"]
 [connection signal="pressed" from="Buy_m4" to="." method="_on_buy_m_4_pressed"]
+[connection signal="pressed" from="Buy_famas" to="." method="_on_buy_famas_pressed"]
 [connection signal="close_requested" from="FailWindow" to="." method="_on_fail_window_close_requested"]
 [connection signal="close_requested" from="SuccessWindow" to="." method="_on_success_window_close_requested"]

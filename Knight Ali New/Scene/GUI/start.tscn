@@ -1,14 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://sqc3iyiq6lka"]
 
 [ext_resource type="Script" path="res://Script/start_gui.gd" id="1_cku50"]
-[ext_resource type="Script" path="res://Script/start_game_button.gd" id="1_whsb2"]
-[ext_resource type="Script" path="res://Script/exit_button.gd" id="2_evndd"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_vpp0j"]
+[ext_resource type="Texture2D" uid="uid://ckrdy65redeex" path="res://Background/start.png" id="2_ai1a4"]
+[ext_resource type="AudioStream" uid="uid://b047h2jfxakun" path="res://bgm/Almost Bliss.mp3" id="3_3q61f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sj2xh"]
 font_size = 81
-font_color = Color(0.152941, 0.152941, 0.152941, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mrsa2"]
+font_size = 18
+font_color = Color(0, 0, 0, 1)
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -19,23 +22,17 @@ offset_left = -2.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.71742, 1.70028)
 script = ExtResource("1_cku50")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0.556863, 0.929412, 0.8, 0.498039)
-position = Vector2(573.75, 323.25)
-scale = Vector2(1148.5, 647.5)
-mesh = SubResource("QuadMesh_vpp0j")
-
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 120.0
-offset_right = 748.0
-offset_bottom = 345.0
-text = "Knight ALI
-     LFKG!"
-label_settings = SubResource("LabelSettings_sj2xh")
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 1753.0
+offset_bottom = 1014.0
+scale = Vector2(0.651617, 0.659195)
+texture = ExtResource("2_ai1a4")
 
 [node name="start_game_button" type="Button" parent="."]
 layout_mode = 0
@@ -44,8 +41,7 @@ offset_top = 351.0
 offset_right = 585.0
 offset_bottom = 397.0
 scale = Vector2(1.86893, 1.85045)
-text = "Let's fxxking go!!"
-script = ExtResource("1_whsb2")
+text = "Let's start!"
 
 [node name="exit_game_button" type="Button" parent="."]
 layout_mode = 0
@@ -54,8 +50,41 @@ offset_top = 464.0
 offset_right = 585.0
 offset_bottom = 510.0
 scale = Vector2(1.86893, 1.85045)
-text = "I'm scared!"
-script = ExtResource("2_evndd")
+text = "Exit!"
 
-[connection signal="pressed" from="start_game_button" to="start_game_button" method="_on_pressed"]
-[connection signal="pressed" from="exit_game_button" to="exit_game_button" method="_on_pressed"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 342.957
+offset_top = 156.445
+offset_right = 782.957
+offset_bottom = 303.445
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 24.4554
+offset_top = 15.2916
+offset_right = 422.455
+offset_bottom = 240.292
+text = "Knight ALI
+"
+label_settings = SubResource("LabelSettings_sj2xh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3q61f")
+stream_paused = true
+
+[node name="music" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.9745
+offset_top = 518.737
+offset_right = 547.974
+offset_bottom = 660.737
+text = "Music from:
+\"Wholesome\" Kevin MacLeod 
+\"Almost Bliss\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/"
+label_settings = SubResource("LabelSettings_mrsa2")
+
+[connection signal="pressed" from="start_game_button" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="exit_game_button" to="." method="_on_exit_game_button_pressed"]

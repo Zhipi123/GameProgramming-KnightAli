@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://blyf60s6hge0j"]
+[gd_scene load_steps=44 format=3 uid="uid://blyf60s6hge0j"]
 
 [ext_resource type="PackedScene" uid="uid://b6mol0kk425h6" path="res://Scene/enemy.tscn" id="1_xljbn"]
 [ext_resource type="Texture2D" uid="uid://cthv2jm4ryuly" path="res://enemy/Skeleton/skeleton_death_strip10.png" id="2_gw64m"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://0yqpf24yfw0o" path="res://enemy/Skeleton/skeleton_walk_reverse_strip8.png" id="4_xaac4"]
 [ext_resource type="Texture2D" uid="uid://dssup260km5us" path="res://enemy/Skeleton/skeleton_walk_strip8.png" id="4_yr8qx"]
 [ext_resource type="Texture2D" uid="uid://drkppsyeo5cao" path="res://Shadows/SmallShadow.png" id="6_a020g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amvnr"]
+radius = 109.018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3foi"]
+radius = 11.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5bmj"]
 atlas = ExtResource("3_8o2yn")
@@ -254,11 +260,25 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uomff"]
+radius = 7.0
+
 [node name="enemy_skeleton" instance=ExtResource("1_xljbn")]
 script = ExtResource("2_ntoyt")
 
-[node name="health_bar" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_amvnr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox" index="0"]
+shape = SubResource("CircleShape2D_a3foi")
+
+[node name="health_bar" parent="." index="2"]
 max_value = 80.0
+
+[node name="SmallShadow" type="Sprite2D" parent="." index="4"]
+position = Vector2(0, 7)
+scale = Vector2(1.2, 1)
+texture = ExtResource("6_a020g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
 z_index = 1
@@ -267,7 +287,5 @@ scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_cxotd")
 animation = &"attack"
 
-[node name="SmallShadow" type="Sprite2D" parent="." index="6"]
-position = Vector2(0, 7)
-scale = Vector2(1.2, 1)
-texture = ExtResource("6_a020g")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+shape = SubResource("CircleShape2D_uomff")

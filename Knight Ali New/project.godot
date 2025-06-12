@@ -19,6 +19,13 @@ config/icon="res://icon.svg"
 
 global="*res://Script/global.gd"
 
+[display]
+
+window/size/viewport_width=1860
+window/size/viewport_height=1200
+window/size/mode=3
+window/size/resizable=false
+
 [input]
 
 ui_left={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3whrgnext7xd"]
+[gd_scene load_steps=22 format=3 uid="uid://d3whrgnext7xd"]
 
 [ext_resource type="Texture2D" uid="uid://be4ijg7vy7m4x" path="res://Background/shop.png" id="1_2gwsp"]
 [ext_resource type="Script" path="res://Script/shop.gd" id="1_5qg21"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://btg8ku0hw8mu8" path="res://weapon/allweapon.png" id="7_kc564"]
 [ext_resource type="PackedScene" uid="uid://exluca04i7q7" path="res://Scene/player.tscn" id="8_daeq7"]
 [ext_resource type="PackedScene" uid="uid://dt4vv4mk56o6v" path="res://Scene/shop_npc.tscn" id="9_3noti"]
+[ext_resource type="AudioStream" uid="uid://r83j3bq38c1p" path="res://bgm/Wholesome.mp3" id="10_8apqm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ch1cn"]
 texture = ExtResource("2_u0o3u")
@@ -193,6 +194,9 @@ label_settings = SubResource("LabelSettings_bdax7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="buy_area"]
 position = Vector2(507.125, 250.5)
 shape = SubResource("RectangleShape2D_4fuqu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_8apqm")
 
 [connection signal="body_entered" from="goBackToScene" to="." method="_on_go_back_to_scene_body_entered"]
 [connection signal="body_exited" from="goBackToScene" to="." method="_on_go_back_to_scene_body_exited"]

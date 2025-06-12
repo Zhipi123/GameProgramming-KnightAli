@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cccmlwlu08hrp"]
+[gd_scene load_steps=9 format=3 uid="uid://cccmlwlu08hrp"]
 
 [ext_resource type="Script" path="res://Script/hud.gd" id="1_1smd4"]
 [ext_resource type="Texture2D" uid="uid://c4l3i0x8bvasp" path="res://Items/diicsu-coin-small.png" id="1_xa6sd"]
@@ -14,12 +14,24 @@ font_color = Color(0, 0, 0, 1)
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_q2rci"]
+font_size = 17
+font_color = Color(0.760784, 0.223529, 0.219608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a6bgo"]
+font_size = 17
+font_color = Color(0.705882, 0.231373, 0.227451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6vb8"]
+font_size = 18
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1smd4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 115.0
 offset_bottom = 56.0
+scale = Vector2(1.32766, 1.39081)
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
@@ -31,10 +43,11 @@ text = "123456"
 label_settings = SubResource("LabelSettings_6cqyc")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-offset_left = 133.0
-offset_top = 12.0
-offset_right = 235.0
-offset_bottom = 43.0
+offset_left = 170.0
+offset_top = 14.0
+offset_right = 297.0
+offset_bottom = 45.0
+scale = Vector2(1.35521, 1.43795)
 
 [node name="Label" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
@@ -50,19 +63,57 @@ text = "60"
 label_settings = SubResource("LabelSettings_sg7kb")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
-offset_left = 312.0
+offset_left = 403.0
 offset_top = 8.0
-offset_right = 537.0
+offset_right = 628.0
 offset_bottom = 48.0
+scale = Vector2(1.1927, 1.38373)
 
 [node name="Label" type="Label" parent="HBoxContainer3"]
 layout_mode = 2
 text = "Current Scene Enemy Count: "
+label_settings = SubResource("LabelSettings_q2rci")
 
 [node name="Label" type="Label" parent="HBoxContainer3/Label"]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 1.0
-offset_right = 269.0
-offset_bottom = 24.0
+offset_left = 237.277
+offset_top = 1.3949
+offset_right = 277.277
+offset_bottom = 25.3949
 text = "111"
+label_settings = SubResource("LabelSettings_a6bgo")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.983
+anchor_top = 0.031
+anchor_right = 0.983
+anchor_bottom = 0.031
+offset_left = -20.416
+offset_top = -20.088
+offset_right = 19.584
+offset_bottom = 19.912
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="HBoxContainer4"]
+layout_mode = 2
+text = "Go back to Menu"
+
+[node name="Window" type="Window" parent="."]
+title = "Alert"
+initial_position = 2
+size = Vector2i(250, 100)
+visible = false
+
+[node name="Label" type="Label" parent="Window"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+Go back to menu in 2 seconds
+......"
+label_settings = SubResource("LabelSettings_p6vb8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer4/Button" to="." method="_on_button_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

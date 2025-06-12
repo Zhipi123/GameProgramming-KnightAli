@@ -5,7 +5,7 @@
 [sub_resource type="QuadMesh" id="QuadMesh_bljis"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v8845"]
-font_size = 51
+font_size = 50
 font_color = Color(0, 0, 0, 1)
 
 [node name="loading" type="Control"]
@@ -15,19 +15,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.76991, 1.63588)
 script = ExtResource("1_clwiv")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0.92549, 0.913725, 0.635294, 1)
-position = Vector2(576.25, 324.25)
-scale = Vector2(1153.5, 649.5)
+modulate = Color(0.807843, 0.866667, 0.498039, 1)
+position = Vector2(576.25, 342.685)
+scale = Vector2(1153.5, 686.371)
 mesh = SubResource("QuadMesh_bljis")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 276.0
-offset_top = 240.0
-offset_right = 902.0
-offset_bottom = 423.0
-text = "loading and coming soon!"
+offset_left = 138.99
+offset_top = 196.836
+offset_right = 764.99
+offset_bottom = 379.836
+scale = Vector2(1.37778, 1.45033)
+text = "loading and coming soon!
+              Knight Ali"
 label_settings = SubResource("LabelSettings_v8845")

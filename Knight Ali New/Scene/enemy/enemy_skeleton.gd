@@ -20,7 +20,7 @@ func die():
 	$AnimatedSprite2D.play("death")
 	print("Enemy died!")
 	global.kill_enemies +=1
-	global.current_coins +=4
+	global.current_coins +=7
 	global.scene_enemy_count -=1
 	await get_tree().create_timer(0.6).timeout 
 	queue_free()

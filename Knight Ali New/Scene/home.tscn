@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuacfdglumv2e"]
+[gd_scene load_steps=15 format=3 uid="uid://cuacfdglumv2e"]
 
 [ext_resource type="Script" path="res://Script/home.gd" id="1_44qp0"]
 [ext_resource type="Texture2D" uid="uid://bphjf7kums0ie" path="res://Background/home.png" id="1_nip8l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bfyu4ujsl47ot" path="res://Items/chest.png" id="3_vptk5"]
 [ext_resource type="Texture2D" uid="uid://cnwxs11b28mwg" path="res://Items/carpet.png" id="4_wsiak"]
 [ext_resource type="PackedScene" uid="uid://exluca04i7q7" path="res://Scene/player.tscn" id="5_474hv"]
+[ext_resource type="AudioStream" uid="uid://r83j3bq38c1p" path="res://bgm/Wholesome.mp3" id="7_d25h2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57irt"]
 texture = ExtResource("2_nkfts")
@@ -98,6 +99,12 @@ sources/2 = SubResource("TileSetAtlasSource_bd3s0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkyp5"]
 size = Vector2(93, 45)
 
+[sub_resource type="LabelSettings" id="LabelSettings_pic8i"]
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxvkk"]
+font_size = 25
+
 [node name="HomeScene" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_44qp0")
@@ -125,6 +132,7 @@ layer_1/tile_data = PackedInt32Array(3014685, 458754, 16)
 position = Vector2(6, 219)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 polygon = PackedVector2Array(3, 1, 24, 209, -7, 420, 63, 421, 164, 410, 335, 412, 397, 412, 506, 405, 684, 405, 692, 424, 787, 428, 792, 407, 1124, 402, 1152, 430, 1124, 369, 1118, 155, 1117, 21, 753, 9, 371, 11, 28, 6, 383, -33, 806, -53, 1147, -16, 1187, 159, 1179, 320, 1168, 465, 798, 480, 294, 470, -24, 475, -56, 366)
 
 [node name="GoOutToGrass" type="Area2D" parent="."]
@@ -134,7 +142,43 @@ position = Vector2(746.5, 617.5)
 shape = SubResource("RectangleShape2D_nkyp5")
 
 [node name="player" parent="." instance=ExtResource("5_474hv")]
-position = Vector2(510, 382)
+position = Vector2(365, 350)
+
+[node name="Window" type="Window" parent="."]
+title = "BackGround Story and Instrutions!"
+initial_position = 1
+size = Vector2i(600, 320)
+visible = false
+
+[node name="Label" type="Label" parent="Window"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Your name is Ali. You like guns and monster games. 
+And you want to be a knight!
+One night, you have a dream, in the dream you have a gun, 
+and the goal in this world is to destroy all the monsters in the world... 
+You seem to be in the scene, this is not like a dream! 
+So you set out on this journey.
+Instructions: W S A D keys control up and down, left and right.
+And click left mouse button to shoot. Have fun!
+The HUD above is the amount of coins, the enemies killed so far, 
+and enemies in the current scene
+IMPORTANT: You have only one life in game!!!"
+label_settings = SubResource("LabelSettings_pic8i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 454.0
+offset_top = 383.0
+offset_right = 982.0
+offset_bottom = 418.0
+text = "Go outside the door and start your journey!
+W S A D : Up Down Left Right
+Left Mouse Button: Shoot"
+label_settings = SubResource("LabelSettings_uxvkk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_d25h2")
 
 [connection signal="body_entered" from="GoOutToGrass" to="." method="_on_go_out_to_grass_body_entered"]
 [connection signal="body_exited" from="GoOutToGrass" to="." method="_on_go_out_to_grass_body_exited"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

@@ -1,10 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://bo3wkurdt1671"]
+[gd_scene load_steps=33 format=3 uid="uid://bo3wkurdt1671"]
 
 [ext_resource type="PackedScene" uid="uid://b6mol0kk425h6" path="res://Scene/enemy.tscn" id="1_2vxx8"]
 [ext_resource type="Script" path="res://Scene/enemy/enemy_slime_2.gd" id="2_qdcby"]
 [ext_resource type="Texture2D" uid="uid://leu4xhtm2oh1" path="res://enemy/Slime2/Death/Slime2_Death_full.png" id="3_eblg6"]
 [ext_resource type="Texture2D" uid="uid://df521dps60oxw" path="res://enemy/Slime2/Attack/Slime2_Attack_full.png" id="3_k71vo"]
 [ext_resource type="Texture2D" uid="uid://cquilfmynqmaj" path="res://enemy/Slime2/Idle/Slime2_Idle_full.png" id="4_nms7l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qyma1"]
+radius = 142.004
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2pmd"]
+radius = 11.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1mvp"]
 atlas = ExtResource("3_k71vo")
@@ -185,13 +191,26 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1q5ns"]
+radius = 7.0
+
 [node name="enemy_slime_2" instance=ExtResource("1_2vxx8")]
 script = ExtResource("2_qdcby")
 
-[node name="health_bar" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_qyma1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox" index="0"]
+shape = SubResource("CircleShape2D_e2pmd")
+
+[node name="health_bar" parent="." index="2"]
 max_value = 150.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_dmmtd")
 animation = &"attack"
 frame_progress = 0.711144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_1q5ns")

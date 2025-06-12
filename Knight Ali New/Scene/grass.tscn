@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dbeflneripred"]
+[gd_scene load_steps=36 format=3 uid="uid://dbeflneripred"]
 
 [ext_resource type="Script" path="res://Script/grass.gd" id="1_0hi7w"]
 [ext_resource type="Texture2D" uid="uid://c1b43jlrtpfhm" path="res://Items/Grass&Road1.png" id="1_8i5ts"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cidt0qvllkv8t" path="res://Shadows/shadow.png" id="6_2ukpi"]
 [ext_resource type="PackedScene" uid="uid://c42cepk3t631m" path="res://Scene/enemy_spawner_grass.tscn" id="10_848d4"]
 [ext_resource type="Texture2D" uid="uid://db18gmf5lwqf1" path="res://Items/Tree&Stone.png" id="11_mtk6i"]
+[ext_resource type="AudioStream" uid="uid://r83j3bq38c1p" path="res://bgm/Wholesome.mp3" id="12_kauch"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsi1s"]
 texture = ExtResource("1_8i5ts")
@@ -126,6 +127,18 @@ texture = ExtResource("11_mtk6i")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1w07m")
 
+[sub_resource type="LabelSettings" id="LabelSettings_td6ap"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivxkn"]
+font_size = 21
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvyet"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5m86"]
+font_size = 19
+
 [node name="GrassScene" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(74, -1)
@@ -203,6 +216,7 @@ shape = SubResource("RectangleShape2D_fvfyo")
 title = "Alert!"
 initial_position = 2
 size = Vector2i(400, 200)
+visible = false
 
 [node name="Label" type="Label" parent="Window"]
 offset_right = 40.0
@@ -225,14 +239,14 @@ shape = SubResource("RectangleShape2D_ujh5n")
 position = Vector2(-62, 310)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road2"]
-position = Vector2(0, 0.5)
+position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_u28t8")
 
 [node name="wrong_road3" type="Area2D" parent="."]
 position = Vector2(-66, 528)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wrong_road3"]
-position = Vector2(2, -2)
+position = Vector2(4, -2)
 shape = SubResource("RectangleShape2D_7i7nb")
 
 [node name="wrong_road4" type="Area2D" parent="."]
@@ -250,16 +264,16 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_u86sa")
 
 [node name="enemy_spawner_grass" parent="." instance=ExtResource("10_848d4")]
-position = Vector2(105, 219)
+position = Vector2(67, 375)
 
 [node name="enemy_spawner_grass2" parent="." instance=ExtResource("10_848d4")]
-position = Vector2(390, 393)
+position = Vector2(394, 384)
 
 [node name="enemy_spawner_grass3" parent="." instance=ExtResource("10_848d4")]
-position = Vector2(475, 60)
+position = Vector2(569, 82)
 
 [node name="enemy_spawner_grass4" parent="." instance=ExtResource("10_848d4")]
-position = Vector2(968, 493)
+position = Vector2(963, 486)
 
 [node name="TileMap3(Y-Sort)" type="TileMap" parent="."]
 z_index = 1
@@ -268,6 +282,82 @@ tile_set = SubResource("TileSet_whxcf")
 format = 2
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(917505, 65537, 1, 2097168, 65537, 1, 2031653, 65537, 1, 852024, 65537, 1, 2555960, 65537, 1, 1048599, 1, 8, 1572900, 1, 8, 2031666, 1, 8, 983103, 1, 8, 1900552, 1, 8, 2359320, 1, 8)
+
+[node name="Window2" type="Window" parent="."]
+title = "Alert!"
+initial_position = 2
+size = Vector2i(300, 200)
+visible = false
+
+[node name="Label" type="Label" parent="Window2"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "     Come here to find
+     road after you kill
+     30 enemies!"
+label_settings = SubResource("LabelSettings_td6ap")
+horizontal_alignment = 1
+
+[node name="Window3" type="Window" parent="."]
+title = "Alert!"
+initial_position = 2
+size = Vector2i(500, 250)
+visible = false
+
+[node name="Label" type="Label" parent="Window3"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "  You've killed 30 enemies!
+  Good job!
+  You can kill more for more coins or you
+  can find road to next scene
+  (You're able to come back if you go to
+ second scene)"
+label_settings = SubResource("LabelSettings_td6ap")
+
+[node name="border" type="StaticBody2D" parent="."]
+position = Vector2(-69, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="border"]
+polygon = PackedVector2Array(0, -7, 6, 11, 7, 113, 8, 277, -6, 281, 0, 344, 10, 351, 9, 484, 10, 505, -6, 508, -5, 548, 10, 554, 10, 664, 412, 663, 495, 661, 499, 676, 542, 680, 560, 659, 1033, 665, 1220, 665, 1221, 612, 1229, 608, 1228, 561, 1211, 547, 1220, 351, 1232, 337, 1229, 288, 1208, 274, 1210, 2, 1061, 3, 1045, -10, 1004, -8, 999, 4, 765, 5, 531, 2, 69, 4, 9, -3, 421, -25, 1237, -25, 1240, 68, 1249, 334, 1248, 548, 1246, 703, 1123, 704, 527, 704, 77, 695, -24, 685, -21, 504, -23, 364, -24, 154)
+
+[node name="Window4" type="Window" parent="."]
+title = "Alert!"
+initial_position = 2
+size = Vector2i(400, 200)
+visible = false
+
+[node name="Label" type="Label" parent="Window4"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "   Welcome to GrassScene
+    After killing 30 enemies
+   you can try to find road to next scene
+     (next scene is second scene)
+       Good Luck!"
+label_settings = SubResource("LabelSettings_ivxkn")
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_kauch")
+volume_db = 1.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 498.0
+offset_top = 258.0
+offset_right = 682.0
+offset_bottom = 313.0
+text = "have a look 
+at the shop! ->"
+label_settings = SubResource("LabelSettings_uvyet")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 464.0
+offset_top = 418.0
+offset_right = 710.0
+offset_bottom = 445.0
+text = "Goal: Kill Enemies reach 30"
+label_settings = SubResource("LabelSettings_u5m86")
 
 [connection signal="body_entered" from="GoBackToHome" to="." method="_on_go_back_to_home_body_entered"]
 [connection signal="body_exited" from="GoBackToHome" to="." method="_on_go_back_to_home_body_exited"]
@@ -281,3 +371,6 @@ layer_0/tile_data = PackedInt32Array(917505, 65537, 1, 2097168, 65537, 1, 203165
 [connection signal="body_entered" from="wrong_road3" to="." method="_on_wrong_road_3_body_entered"]
 [connection signal="body_entered" from="wrong_road4" to="." method="_on_wrong_road_4_body_entered"]
 [connection signal="body_entered" from="wrong_road5" to="." method="_on_wrong_road_5_body_entered"]
+[connection signal="close_requested" from="Window2" to="." method="_on_window_2_close_requested"]
+[connection signal="close_requested" from="Window3" to="." method="_on_window_3_close_requested"]
+[connection signal="close_requested" from="Window4" to="." method="_on_window_4_close_requested"]

@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cda8vfmgncnhp"]
+[gd_scene load_steps=2 format=3 uid="uid://cda8vfmgncnhp"]
 
 [ext_resource type="Script" path="res://Scene/weapon.gd" id="1_rp678"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dgtuq"]
 
 [node name="weapon" type="Sprite2D"]
 y_sort_enabled = true
@@ -13,8 +11,5 @@ y_sort_enabled = true
 position = Vector2(54, -1)
 
 [node name="ShootSpeedTimer" type="Timer" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_dgtuq")
 
 [connection signal="timeout" from="ShootSpeedTimer" to="." method="_on_shoot_speed_timer_timeout"]

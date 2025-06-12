@@ -1,8 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdoras5ah12u6"]
+[gd_scene load_steps=26 format=3 uid="uid://bdoras5ah12u6"]
 
 [ext_resource type="PackedScene" uid="uid://b6mol0kk425h6" path="res://Scene/enemy.tscn" id="1_krpbj"]
 [ext_resource type="Script" path="res://Scene/enemy/enemy_angel.gd" id="2_cm2rq"]
 [ext_resource type="Texture2D" uid="uid://bk2ysi261qfu2" path="res://enemy/Angel/Angel_1.png" id="3_5psig"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4w7b3"]
+radius = 179.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3hda"]
+radius = 10.0499
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eg8uc"]
 atlas = ExtResource("3_5psig")
@@ -148,15 +154,27 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jup3"]
+radius = 6.0
+
 [node name="enemy_angel" instance=ExtResource("1_krpbj")]
 script = ExtResource("2_cm2rq")
 
-[node name="health_bar" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_4w7b3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox" index="0"]
+shape = SubResource("CircleShape2D_v3hda")
+
+[node name="health_bar" parent="." index="2"]
 max_value = 200.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
 position = Vector2(0, 1)
 scale = Vector2(0.795, 0.795)
 sprite_frames = SubResource("SpriteFrames_isuq0")
 animation = &"death"
 frame_progress = 0.783035
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_4jup3")
